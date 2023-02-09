@@ -1,0 +1,51 @@
+.navbar {
+    padding: 0.5rem 2.0rem;
+}
+
+.welcome-library {
+    font-size: 32px;
+    text-align: center;
+    margin: 13px 0;
+    
+}
+
+.form-inline .form-control {
+    width: 240px;
+}
+
+.form-search-book {
+    text-align: center;
+    width: 100%;
+
+}
+
+.form-control {
+    height: 50px;
+}
+
+.form-group {
+    display: inline-block;
+    position: relative;
+    width: 600px;
+    margin-top: 10px;
+}
+
+.fa-solid .fa-magnifying-glass {
+    font-size: 150px;
+    color: white;
+}
+
+.btn-color {
+    background-color: rgb(62, 134, 210);
+}
+
+footer {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #212529;
+    color: #ffffff;
+    box-sizing: border-box;
+}
