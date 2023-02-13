@@ -42,27 +42,27 @@
 	</header>
 
 	<section>
-		<form>
+		<form action="http://localhost:8080/projeto-livraria/Controller" method="POST">
 			<label for="book-name"
 				class="col-sm-2 col-form-label col-form-label-sm label-add-book">Nome</label>
 			<div class="col-sm-10">
-				<input type="text" id="book-name" class="form-add-book form-control"
+				<input type="text" name="nome" id="book-name" class="form-add-book form-control"
 					placeholder="Nome do livro">
 			</div>
 
 			<label for="book-author" class="col-sm-2 col-form-label label-add-book">Autor</label>
 			<div class="col-sm-10">
-				<input type="text" id="book-author" class="form-add-book form-control"
+				<input type="text" name="autor" id="book-author" class="form-add-book form-control"
 					placeholder="Autor do livro">
 			</div>
 
 			<label for="book-category"
 				class="col-sm-2 col-form-label col-form-label-lg label-add-book">Categoria</label>
 			<div class="col-sm-10">
-				<input type="text" id="book-category" class="form-add-book form-control"
+				<input type="text" name="categoria" id="book-category" class="form-add-book form-control"
 					placeholder="Categoria do livro">
 			</div>
-			<button type="submit" class="btn btn-primary">Cadastrar</button>
+			<input type="submit" value="Cadastrar" class="btn btn-primary">
 
 		</form>
 	</section>
