@@ -1,0 +1,12 @@
+@charset "utf-8";
+
+.table-books {
+	margin: 20px; /* Centraliza sua tabela */
+	width: 75%;
+	
+}
+.button-add-book {
+	margin: 10px 0 0 10px;
+	color: white!important;
+	cursor: pointer;
+}
