@@ -1,0 +1,15 @@
+.span-off {
+	display: none;
+}
+
+.span-required {
+	display: block;
+	color: red;
+	width: 50%;
+	font-size: 18px;
+	margin: 10px 0;
+}
+
+.border-error {
+	border: 1px solid #e63636;
+}

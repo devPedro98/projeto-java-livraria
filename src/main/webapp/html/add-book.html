@@ -14,6 +14,7 @@
 	type="image/x-icon" />
 <link rel="stylesheet" href="../css/books.css">
 <link rel="stylesheet" href="../css/add-book.css">
+<link rel="stylesheet" href="../css/setError.css">
 </head>
 <body>
 	<header>
@@ -42,31 +43,39 @@
 	</header>
 
 	<section>
-		<form action="http://localhost:8080/projeto-livraria/Controller" method="POST">
+		<form id="add-book"
+			action="http://localhost:8080/projeto-livraria/Controller"
+			method="POST">
 			<label for="book-name"
 				class="col-sm-2 col-form-label col-form-label-sm label-add-book">Nome</label>
 			<div class="col-sm-10">
-				<input type="text" name="nome" id="book-name" class="form-add-book form-control"
-					placeholder="Nome do livro">
+				<input type="text" name="nome" id="book-name"
+					class="form-add-book form-control" placeholder="Nome do livro"  oninput="nameValidate()"
+					required> <span class="span-off">Nome deve ter mais do que 8 caracteres</span>
 			</div>
 
-			<label for="book-author" class="col-sm-2 col-form-label label-add-book">Autor</label>
+			<label for="book-author"
+				class="col-sm-2 col-form-label label-add-book">Autor</label>
 			<div class="col-sm-10">
-				<input type="text" name="autor" id="book-author" class="form-add-book form-control"
-					placeholder="Autor do livro">
+				<input type="text" name="autor" id="book-author"
+					class="form-add-book form-control" placeholder="Autor do livro" oninput="authorValidate()"
+					required><span class="span-off">Autor deve ter mais do que 8 caracteres</span>
 			</div>
 
 			<label for="book-category"
 				class="col-sm-2 col-form-label col-form-label-lg label-add-book">Categoria</label>
 			<div class="col-sm-10">
-				<input type="text" name="categoria" id="book-category" class="form-add-book form-control"
-					placeholder="Categoria do livro">
+				<input type="text" name="categoria" id="book-category"
+					class="form-add-book form-control" placeholder="Categoria do livro" oninput="categoryValidate()"
+					required><span class="span-off">Nome deve ter mais do que 5 caracteres</span>
 			</div>
-			<input type="submit" value="Cadastrar" class="btn btn-primary">
+			<input id="input-cadastrar" type="submit" value="Cadastrar"
+				class="btn btn-primary">
 
 		</form>
 	</section>
 
 	<footer> Copyright 2023 © - Asafe Livraria™ </footer>
+	<script type="text/javascript" src="../scripts/formValidation.js"></script>
 </body>
 </html>

@@ -3,6 +3,7 @@ package br.com.livrariaasafe.model;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -41,7 +42,7 @@ public class DAO {
 			pst.executeUpdate();
 			connectionDB.close();
 
-		} catch (Exception e) {
+		} catch (SQLException|NullPointerException e) {
 			logger.log(Level.WARNING, e.toString(), e);
 		}
 	}
