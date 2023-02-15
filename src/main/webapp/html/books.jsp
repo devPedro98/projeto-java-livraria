@@ -52,12 +52,14 @@ ArrayList<JavaBeans> list = (ArrayList<JavaBeans>) request.getAttribute("asafeli
 	</div>
 	<section id="section-table-form">
 		<table id=table-form>
+		<caption></caption>
 			<thead>
 				<tr>
 					<th>Id</th>
 					<th>Nome</th>
 					<th>Autor</th>
 					<th>Categoria</th>
+					<th>Opções</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -69,6 +71,7 @@ ArrayList<JavaBeans> list = (ArrayList<JavaBeans>) request.getAttribute("asafeli
 					<td><%=list.get(i).getName()%></td>
 					<td><%=list.get(i).getAuthor()%></td>
 					<td><%=list.get(i).getCategory()%></td>
+					<td><a href="select?idbook=<%=list.get(i).getId() %>" class="btn btn-primary">Editar</a></td>
 				</tr>
 				<%
 				}

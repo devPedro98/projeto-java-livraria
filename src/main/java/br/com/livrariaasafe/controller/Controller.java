@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.livrariaasafe.model.DAO;
 import br.com.livrariaasafe.model.JavaBeans;
 
-@WebServlet(urlPatterns = { "/Controller", "/main"})
+@WebServlet(urlPatterns = { "/Controller", "/main", "/select" })
 public class Controller extends HttpServlet {
 	final Logger logger = Logger.getLogger(Controller.class.getName());
 	private static final long serialVersionUID = 1L;
@@ -30,27 +30,37 @@ public class Controller extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		String action = request.getServletPath();
-		if (action.equals("/main")) {
-			showBooks(request, response);
-		} else {
-			response.sendRedirect("index.html");
+		try {
+			String action = request.getServletPath();
+			if (action.equals("/main")) {
+				showBooks(request, response);
+			} else if (action.equals("/select")) {
+				updateBook(request, response);
+			} else {
+				response.sendRedirect("index.html");
+			}
+		} catch (IOException | ServletException e) {
+			logger.log(Level.WARNING, e.toString(), e);
 		}
+
+	}
+
+	protected void updateBook(HttpServletRequest request, HttpServletResponse response) {
+		String idBook = request.getParameter("idbook");
+		System.out.println(idBook);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		PrintWriter out = resp.getWriter();
-		logger.log(Level.INFO, req.getParameter("nome"));
-		logger.log(Level.INFO, req.getParameter("autor"));
-		logger.log(Level.INFO, req.getParameter("categoria"));
-		out.println("<p>Livro cadastrado com sucesso!</p>");
-		contact.setName(req.getParameter("nome"));
-		contact.setAuthor(req.getParameter("autor"));
-		contact.setCategory(req.getParameter("categoria"));
-
-		dao.createBook(contact);
+		try {
+			contact.setName(req.getParameter("nome"));
+			contact.setAuthor(req.getParameter("autor"));
+			contact.setCategory(req.getParameter("categoria"));
+			dao.createBook(contact);
+			resp.sendRedirect("html/successfully-registered-user.html");
+		} catch (IOException e) {
+			logger.log(Level.WARNING, e.toString(), e);
+		}
 
 	}
 
