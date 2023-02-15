@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -31,7 +33,7 @@
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav">
 					<li class="nav-item active"><a class="nav-link text-white"
-						href="http://localhost:8080/projeto-livraria/html/books.html">Livros<span
+						href="http://localhost:8080/projeto-livraria/main">Livros<span
 							class="sr-only">(current)</span></a></li>
 					<li class="nav-item"><a class="nav-link text-white" href="#">Categorias</a>
 					</li>
@@ -75,7 +77,7 @@
 		</form>
 	</section>
 
-	<footer> Copyright 2023 © - Asafe Livraria™ </footer>
+	<footer> Copyright 2023 Â© - Asafe Livrariaâ¢ </footer>
 	<script type="text/javascript" src="../scripts/formValidation.js"></script>
 </body>
 </html>

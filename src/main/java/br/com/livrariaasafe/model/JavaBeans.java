@@ -1,36 +1,53 @@
 package br.com.livrariaasafe.model;
 
 public class JavaBeans {
-	private String name;
-	private String author;
-	private String category;
+	private String idBook;
+	private String bookName;
+	private String bookAuthor;
+	private String bookCategory;
 
 	public JavaBeans() {
 		super();
 	}
 
+	public JavaBeans(String id, String name, String author, String category) {
+		super();
+		this.idBook = id;
+		this.bookName = name;
+		this.bookAuthor = author;
+		this.bookCategory = category;
+	}
+
 	public String getName() {
-		return name;
+		return bookName;
+	}
+
+	public String getId() {
+		return idBook;
+	}
+
+	public void setId(String id) {
+		this.idBook = id;
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.bookName = name;
 	}
 
 	public String getAuthor() {
-		return author;
+		return bookAuthor;
 	}
 
 	public void setAuthor(String author) {
-		this.author = author;
+		this.bookAuthor = author;
 	}
 
 	public String getCategory() {
-		return category;
+		return bookCategory;
 	}
 
 	public void setCategory(String category) {
-		this.category = category;
+		this.bookCategory = category;
 	}
 
 }

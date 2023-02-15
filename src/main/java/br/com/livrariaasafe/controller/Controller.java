@@ -2,9 +2,11 @@ package br.com.livrariaasafe.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.livrariaasafe.model.DAO;
 import br.com.livrariaasafe.model.JavaBeans;
 
-@WebServlet(urlPatterns = { "/Controller", "/main", "/insert" })
+@WebServlet(urlPatterns = { "/Controller", "/main"})
 public class Controller extends HttpServlet {
 	final Logger logger = Logger.getLogger(Controller.class.getName());
 	private static final long serialVersionUID = 1L;
@@ -54,10 +56,10 @@ public class Controller extends HttpServlet {
 
 	protected void showBooks(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.sendRedirect("html/books.html");
-	}
-
-	protected void createBook(JavaBeans name, JavaBeans author, JavaBeans category) {
+		ArrayList<JavaBeans> list = dao.readBooks();
+		request.setAttribute("asafelibrary", list);
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("html/books.jsp");
+		requestDispatcher.forward(request, response);
 
 	}
 

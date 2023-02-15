@@ -1,3 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+<%@page import="br.com.livrariaasafe.model.JavaBeans"%>
+<%@page import="java.util.ArrayList"%>
+<%
+ArrayList<JavaBeans> list = (ArrayList<JavaBeans>) request.getAttribute("asafelibrary");
+%>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -9,10 +16,10 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="../css/style.css">
-<link rel="shortcut icon" href="../img/favicon-livro.png"
+<link rel="stylesheet" href="css/style.css">
+<link rel="shortcut icon" href="img/favicon-livro.png"
 	type="image/x-icon" />
-	<link rel="stylesheet" href="../css/books.css">
+<link rel="stylesheet" href="css/books.css">
 </head>
 <body>
 	<header>
@@ -29,8 +36,7 @@
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav">
 					<li class="nav-item active"><a class="nav-link text-white"
-						href="http://localhost:8080/projeto-livraria/html/books.html">Livros<span
-							class="sr-only">(current)</span></a></li>
+						href="main">Livros<span class="sr-only">(current)</span></a></li>
 					<li class="nav-item"><a class="nav-link text-white" href="#">Categorias</a>
 					</li>
 					<li class="nav-item"><a class="nav-link text-white" href="#">Autores</a>
@@ -39,42 +45,41 @@
 			</div>
 		</nav>
 	</header>
-	<div class="button-add-book">
-		<a class="btn btn-primary" href="http://localhost:8080/projeto-livraria/html/add-book.html">Novo Livro</a>
+	<div class="div-button-add-book">
+		<a class="btn btn-primary button-add-book"
+			href="http://localhost:8080/projeto-livraria/html/add-book.jsp">Novo
+			Livro</a>
 	</div>
-	<table class="table table-books">
-		<thead>
-			<tr>
-				<th scope="col">ID</th>
-				<th scope="col">Titulo</th>
-				<th scope="col">Autor</th>
-				<th scope="col">Categoria</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<th scope="row">1</th>
-				<td>Mark</td>
-				<td>Otto</td>
-				<td>@mdo</td>
-			</tr>
-			<tr>
-				<th scope="row">2</th>
-				<td>Jacob</td>
-				<td>Thornton</td>
-				<td>@fat</td>
-			</tr>
-			<tr>
-				<th scope="row">3</th>
-				<td>Larry</td>
-				<td>the Bird</td>
-				<td>@twitter</td>
-			</tr>
-		</tbody>
-	</table>
+	<section id="section-table-form">
+		<table id=table-form>
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nome</th>
+					<th>Autor</th>
+					<th>Categoria</th>
+				</tr>
+			</thead>
+			<tbody>
+				<%
+				for (int i = 0; i < list.size(); i++) {
+				%>
+				<tr>
+					<td><%=list.get(i).getId()%></td>
+					<td><%=list.get(i).getName()%></td>
+					<td><%=list.get(i).getAuthor()%></td>
+					<td><%=list.get(i).getCategory()%></td>
+				</tr>
+				<%
+				}
+				%>
+			</tbody>
+		</table>
+	</section>
 
 
 
-	<footer> Copyright 2023 © - Livraria Asafe™ </footer>
+
+	<footer> Copyright 2023 © - Livraria Asafe </footer>
 </body>
 </html>
