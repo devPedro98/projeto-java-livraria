@@ -44,15 +44,17 @@ public class Controller extends HttpServlet {
 
 	}
 
-	protected void updateBook(HttpServletRequest request, HttpServletResponse response) {
+	protected void updateBook(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String idBook = request.getParameter("idbook");
 		book.setId(idBook);
 		dao.selectBook(book);
-		System.out.println(book.getId());
-		System.out.println(book.getName());
-		System.out.println(book.getAuthor());
-		System.out.println(book.getCategory());
-
+		request.setAttribute("id", book.getId());
+		request.setAttribute("nome", book.getName());
+		request.setAttribute("autor", book.getAuthor());
+		request.setAttribute("categoria", book.getCategory());
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("html/edit.jsp");
+		requestDispatcher.forward(request, response);
 	}
 
 	@Override

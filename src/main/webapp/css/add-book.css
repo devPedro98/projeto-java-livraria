@@ -1,4 +1,4 @@
-@charset "ISO-8859-1";
+@charset "utf-8";
 
 .btn-primary {
 	margin: 20px 0 0 15px
@@ -6,6 +6,11 @@
 
 .form-add-book {
 	width: 50%;
+}
+
+#book-id {
+	width: 50%;
+	
 }
 
 .label-add-book {
