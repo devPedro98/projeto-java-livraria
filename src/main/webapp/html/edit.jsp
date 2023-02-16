@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -46,8 +46,7 @@
 
 	<section>
 		<form id="add-book"
-			action="http://localhost:8080/projeto-livraria/Controller"
-			method="POST">
+			action="update">
 			<label
 				class="col-sm-2 col-form-label col-form-label-sm label-add-book">ID</label>
 			<div class="col-sm-10">

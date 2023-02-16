@@ -87,4 +87,20 @@ public class DAO {
 			logger.log(Level.WARNING, e.toString(), e);
 		}
 	}
+
+	public void changeBook(JavaBeans book) {
+		String sqlCommandUpdate = "update livro set nome = ?, autor = ?, categoria = ? where id = ?";
+		try {
+			Connection con = connect();
+			PreparedStatement preparedStatement = con.prepareStatement(sqlCommandUpdate);
+			preparedStatement.setString(1, book.getName());
+			preparedStatement.setString(2, book.getAuthor());
+			preparedStatement.setString(3, book.getCategory());
+			preparedStatement.setString(4, book.getId());
+			preparedStatement.executeUpdate();
+			con.close();
+		} catch (SQLException e) {
+			logger.log(Level.WARNING, e.toString(), e);
+		}
+	}
 }

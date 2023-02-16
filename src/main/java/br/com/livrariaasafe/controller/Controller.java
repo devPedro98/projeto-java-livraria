@@ -15,12 +15,16 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.livrariaasafe.model.DAO;
 import br.com.livrariaasafe.model.JavaBeans;
 
-@WebServlet(urlPatterns = { "/Controller", "/main", "/select" })
+@WebServlet(urlPatterns = { "/Controller", "/main", "/select", "/update" })
 public class Controller extends HttpServlet {
 	final Logger logger = Logger.getLogger(Controller.class.getName());
 	private static final long serialVersionUID = 1L;
 	static DAO dao = new DAO();
 	static JavaBeans book = new JavaBeans();
+	private static final String BOOKID = "id";
+	private static final String BOOKNAME = "nome";
+	private static final String BOOKAUTOR = "autor";
+	private static final String BOOKCATEGORY = "categoria";
 
 	public Controller() {
 		super();
@@ -34,6 +38,8 @@ public class Controller extends HttpServlet {
 			if (action.equals("/main")) {
 				showBooks(request, response);
 			} else if (action.equals("/select")) {
+				fillFormUpdateBook(request, response);
+			} else if (action.equals("/update")) {
 				updateBook(request, response);
 			} else {
 				response.sendRedirect("index.html");
@@ -44,7 +50,16 @@ public class Controller extends HttpServlet {
 
 	}
 
-	protected void updateBook(HttpServletRequest request, HttpServletResponse response)
+	protected void updateBook(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		book.setId(request.getParameter(BOOKID));
+		book.setName(request.getParameter(BOOKNAME));
+		book.setAuthor(request.getParameter(BOOKAUTOR));
+		book.setCategory(request.getParameter(BOOKCATEGORY));
+		dao.changeBook(book);
+		response.sendRedirect("html/successfully-updated.html");
+	}
+
+	protected void fillFormUpdateBook(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String idBook = request.getParameter("idbook");
 		book.setId(idBook);
@@ -60,9 +75,9 @@ public class Controller extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
-			book.setName(req.getParameter("nome"));
-			book.setAuthor(req.getParameter("autor"));
-			book.setCategory(req.getParameter("categoria"));
+			book.setName(req.getParameter(BOOKNAME));
+			book.setAuthor(req.getParameter(BOOKAUTOR));
+			book.setCategory(req.getParameter(BOOKCATEGORY));
 			dao.createBook(book);
 			resp.sendRedirect("html/successfully-registered-user.html");
 		} catch (IOException e) {
