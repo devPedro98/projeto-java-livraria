@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -41,19 +42,19 @@ public class DAO {
 			pst.executeUpdate();
 			connectionDB.close();
 
-		} catch (SQLException|NullPointerException e) {
+		} catch (SQLException | NullPointerException e) {
 			logger.log(Level.WARNING, e.toString(), e);
 		}
 	}
-	
-	public ArrayList<JavaBeans> readBooks() {
+
+	public List<JavaBeans> readBooks() {
 		ArrayList<JavaBeans> books = new ArrayList<>();
 		String read = "select * from livro";
 		try {
 			Connection connectionDB = connect();
 			PreparedStatement pst = connectionDB.prepareStatement(read);
 			ResultSet result = pst.executeQuery();
-			while(result.next()) {
+			while (result.next()) {
 				String id = result.getString(1);
 				String name = result.getString(2);
 				String author = result.getString(3);
@@ -65,6 +66,25 @@ public class DAO {
 		} catch (Exception e) {
 			logger.log(Level.WARNING, e.toString(), e);
 			return books;
+		}
+	}
+
+	public void selectBook(JavaBeans book) {
+		String readBook = "select * from livro where id = ?";
+		try {
+			Connection con = connect();
+			PreparedStatement pst = con.prepareStatement(readBook);
+			pst.setString(1, book.getId());
+			ResultSet resultSet = pst.executeQuery();
+			while (resultSet.next()) {
+				book.setId(resultSet.getString(1));
+				book.setName(resultSet.getString(2));
+				book.setAuthor(resultSet.getString(3));
+				book.setCategory(resultSet.getString(4));
+			}
+			con.close();
+		} catch (SQLException e) {
+			logger.log(Level.WARNING, e.toString(), e);
 		}
 	}
 }
