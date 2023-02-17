@@ -52,8 +52,7 @@ public class Controller extends HttpServlet {
 
 	}
 
-	protected void removeBook(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void removeBook(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String id = request.getParameter("id");
 		book.setId(id);
 		dao.removeBook(book);

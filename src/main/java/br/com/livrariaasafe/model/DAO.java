@@ -12,47 +12,53 @@ import java.util.logging.Logger;
 
 public class DAO {
 
-	final Logger logger = Logger.getLogger(DAO.class.getName());
-
+	private final Logger logger = Logger.getLogger(DAO.class.getName());
 	private String driver = "com.mysql.cj.jdbc.Driver";
 	private String url = "jdbc:mysql://127.0.0.1:3306/livraria?useUnicode=true&characterEncoding=utf-8&useTimezone=true&serverTimezone=UTC";
 	private String user = "root";
 	private String password = "10203040";
 
-	private Connection connect() {
-		Connection con = null;
+	private Connection connect() throws SQLException {
 		try {
 			Class.forName(driver);
-			con = DriverManager.getConnection(url, user, password);
-			return con;
-		} catch (ClassNotFoundException|SQLException|NullPointerException e) {
-			logger.log(Level.WARNING, e.toString(), e);
-			return null;
+			return DriverManager.getConnection(url, user, password);
+		} catch (ClassNotFoundException | SQLException | NullPointerException e) {
+			throw new SQLException("Não foi possível estabelecer a conexão com o banco de dados", e);
 		}
 	}
 
 	public void createBook(JavaBeans contact) {
 		String create = "insert into livro (nome, autor, categoria) values (?, ?, ?)";
+		PreparedStatement pst = null;
 		try {
-			Connection connectionDB = connect();
-			PreparedStatement pst = connectionDB.prepareStatement(create);
+			Connection con = connect();
+			pst = con.prepareStatement(create);
 			pst.setString(1, contact.getName());
 			pst.setString(2, contact.getAuthor());
 			pst.setString(3, contact.getCategory());
 			pst.executeUpdate();
-			connectionDB.close();
+			con.close();
 
 		} catch (SQLException | NullPointerException e) {
 			logger.log(Level.WARNING, e.toString(), e);
-		} 
+		} finally {
+			if (pst != null) {
+				try {
+					pst.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 
 	public List<JavaBeans> readBooks() {
 		ArrayList<JavaBeans> books = new ArrayList<>();
 		String read = "select * from livro";
+		PreparedStatement pst = null;
 		try {
 			Connection connectionDB = connect();
-			PreparedStatement pst = connectionDB.prepareStatement(read);
+			pst = connectionDB.prepareStatement(read);
 			ResultSet result = pst.executeQuery();
 			while (result.next()) {
 				String id = result.getString(1);
@@ -62,18 +68,26 @@ public class DAO {
 				books.add(new JavaBeans(id, name, author, category));
 			}
 			connectionDB.close();
-			return books;
-		} catch ( SQLException|NullPointerException e) {
+		} catch (SQLException | NullPointerException e) {
 			logger.log(Level.WARNING, e.toString(), e);
-			return books;
+		} finally {
+			if (pst != null) {
+				try {
+					pst.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
+		return books;
 	}
 
 	public void selectBook(JavaBeans book) {
 		String readBook = "select * from livro where id = ?";
+		PreparedStatement pst = null;
 		try {
 			Connection con = connect();
-			PreparedStatement pst = con.prepareStatement(readBook);
+			pst = con.prepareStatement(readBook);
 			pst.setString(1, book.getId());
 			ResultSet resultSet = pst.executeQuery();
 			while (resultSet.next()) {
@@ -85,35 +99,61 @@ public class DAO {
 			con.close();
 		} catch (SQLException e) {
 			logger.log(Level.WARNING, e.toString(), e);
+		} finally {
+			if (pst != null) {
+				try {
+					pst.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 
 	public void changeBook(JavaBeans book) {
 		String sqlCommandUpdate = "update livro set nome = ?, autor = ?, categoria = ? where id = ?";
+		PreparedStatement pst = null;
 		try {
 			Connection con = connect();
-			PreparedStatement preparedStatement = con.prepareStatement(sqlCommandUpdate);
-			preparedStatement.setString(1, book.getName());
-			preparedStatement.setString(2, book.getAuthor());
-			preparedStatement.setString(3, book.getCategory());
-			preparedStatement.setString(4, book.getId());
-			preparedStatement.executeUpdate();
+			pst = con.prepareStatement(sqlCommandUpdate);
+			pst.setString(1, book.getName());
+			pst.setString(2, book.getAuthor());
+			pst.setString(3, book.getCategory());
+			pst.setString(4, book.getId());
+			pst.executeUpdate();
 			con.close();
 		} catch (SQLException e) {
 			logger.log(Level.WARNING, e.toString(), e);
+		} finally {
+			if (pst != null) {
+				try {
+					pst.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 	}
-	
+
 	public void removeBook(JavaBeans book) {
 		String delete = "delete from livro where id = ?";
+		PreparedStatement pst = null;
 		try {
 			Connection con = connect();
-			PreparedStatement preparedStatement = con.prepareStatement(delete);
-			preparedStatement.setString(1, book.getId());
-			preparedStatement.executeUpdate();
+			pst = con.prepareStatement(delete);
+			pst.setString(1, book.getId());
+			pst.executeUpdate();
 			con.close();
 		} catch (SQLException e) {
 			logger.log(Level.WARNING, e.toString(), e);
+		} finally {
+			if (pst != null) {
+				try {
+					pst.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 }
