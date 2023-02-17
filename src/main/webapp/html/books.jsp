@@ -20,6 +20,7 @@ ArrayList<JavaBeans> list = (ArrayList<JavaBeans>) request.getAttribute("asafeli
 <link rel="shortcut icon" href="img/favicon-livro.png"
 	type="image/x-icon" />
 <link rel="stylesheet" href="css/books.css">
+<link rel="stylesheet" href="css/validationDelete.css">
 </head>
 <body>
 	<header>
@@ -71,7 +72,11 @@ ArrayList<JavaBeans> list = (ArrayList<JavaBeans>) request.getAttribute("asafeli
 					<td><%=list.get(i).getName()%></td>
 					<td><%=list.get(i).getAuthor()%></td>
 					<td><%=list.get(i).getCategory()%></td>
-					<td><a href="select?idbook=<%=list.get(i).getId() %>" class="btn btn-primary">Editar</a></td>
+					<td>
+					<a href="select?idbook=<%=list.get(i).getId() %>" class="btn btn-primary">Editar</a>
+					<a href="javascript: validation(<%=list.get(i).getId() %>)" class="btn button-delete">Deletar</a>
+					
+					</td>
 				</tr>
 				<%
 				}
@@ -84,5 +89,6 @@ ArrayList<JavaBeans> list = (ArrayList<JavaBeans>) request.getAttribute("asafeli
 
 
 	<footer> Copyright 2023 © - Livraria Asafe </footer>
+	<script type="text/javascript" src="scripts/validationDelete.js"></script>
 </body>
 </html>

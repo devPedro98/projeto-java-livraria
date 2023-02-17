@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.livrariaasafe.model.DAO;
 import br.com.livrariaasafe.model.JavaBeans;
 
-@WebServlet(urlPatterns = { "/Controller", "/main", "/select", "/update" })
+@WebServlet(urlPatterns = { "/Controller", "/main", "/select", "/update", "/delete" })
 public class Controller extends HttpServlet {
 	final Logger logger = Logger.getLogger(Controller.class.getName());
 	private static final long serialVersionUID = 1L;
@@ -41,12 +41,23 @@ public class Controller extends HttpServlet {
 				fillFormUpdateBook(request, response);
 			} else if (action.equals("/update")) {
 				updateBook(request, response);
+			} else if (action.equals("/delete")) {
+				removeBook(request, response);
 			} else {
 				response.sendRedirect("index.html");
 			}
 		} catch (IOException | ServletException e) {
 			logger.log(Level.WARNING, e.toString(), e);
 		}
+
+	}
+
+	protected void removeBook(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String id = request.getParameter("id");
+		book.setId(id);
+		dao.removeBook(book);
+		response.sendRedirect("main");
 
 	}
 
@@ -64,10 +75,10 @@ public class Controller extends HttpServlet {
 		String idBook = request.getParameter("idbook");
 		book.setId(idBook);
 		dao.selectBook(book);
-		request.setAttribute("id", book.getId());
-		request.setAttribute("nome", book.getName());
-		request.setAttribute("autor", book.getAuthor());
-		request.setAttribute("categoria", book.getCategory());
+		request.setAttribute(BOOKID, book.getId());
+		request.setAttribute(BOOKNAME, book.getName());
+		request.setAttribute(BOOKAUTOR, book.getAuthor());
+		request.setAttribute(BOOKCATEGORY, book.getCategory());
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("html/edit.jsp");
 		requestDispatcher.forward(request, response);
 	}

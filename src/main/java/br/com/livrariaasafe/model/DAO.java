@@ -25,7 +25,7 @@ public class DAO {
 			Class.forName(driver);
 			con = DriverManager.getConnection(url, user, password);
 			return con;
-		} catch (Exception e) {
+		} catch (ClassNotFoundException|SQLException|NullPointerException e) {
 			logger.log(Level.WARNING, e.toString(), e);
 			return null;
 		}
@@ -44,7 +44,7 @@ public class DAO {
 
 		} catch (SQLException | NullPointerException e) {
 			logger.log(Level.WARNING, e.toString(), e);
-		}
+		} 
 	}
 
 	public List<JavaBeans> readBooks() {
@@ -63,7 +63,7 @@ public class DAO {
 			}
 			connectionDB.close();
 			return books;
-		} catch (Exception e) {
+		} catch ( SQLException|NullPointerException e) {
 			logger.log(Level.WARNING, e.toString(), e);
 			return books;
 		}
@@ -97,6 +97,19 @@ public class DAO {
 			preparedStatement.setString(2, book.getAuthor());
 			preparedStatement.setString(3, book.getCategory());
 			preparedStatement.setString(4, book.getId());
+			preparedStatement.executeUpdate();
+			con.close();
+		} catch (SQLException e) {
+			logger.log(Level.WARNING, e.toString(), e);
+		}
+	}
+	
+	public void removeBook(JavaBeans book) {
+		String delete = "delete from livro where id = ?";
+		try {
+			Connection con = connect();
+			PreparedStatement preparedStatement = con.prepareStatement(delete);
+			preparedStatement.setString(1, book.getId());
 			preparedStatement.executeUpdate();
 			con.close();
 		} catch (SQLException e) {
