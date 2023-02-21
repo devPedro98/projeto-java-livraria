@@ -52,27 +52,31 @@
 				class="col-sm-2 col-form-label col-form-label-sm label-add-book">Nome</label>
 			<div class="col-sm-10">
 				<input type="text" name="nome" id="book-name"
-					class="form-add-book form-control" placeholder="Nome do livro"  oninput="nameValidate()"
-					required> <span class="span-off">Nome deve ter mais do que 8 caracteres</span>
+					class="form-add-book form-control" maxlength="40"
+					placeholder="Nome do livro" oninput="nameValidate()" required>
+				<span class="span-off">Nome deve ter mais do que 8 caracteres</span>
 			</div>
 
 			<label for="book-author"
 				class="col-sm-2 col-form-label label-add-book">Autor</label>
 			<div class="col-sm-10">
 				<input type="text" name="autor" id="book-author"
-					class="form-add-book form-control" placeholder="Autor do livro" oninput="authorValidate()"
-					required><span class="span-off">Autor deve ter mais do que 8 caracteres</span>
+					class="form-add-book form-control" maxlength="20"
+					placeholder="Autor do livro" oninput="authorValidate()" required><span
+					class="span-off">Autor deve ter mais do que 8 caracteres</span>
 			</div>
 
 			<label for="book-category"
 				class="col-sm-2 col-form-label col-form-label-lg label-add-book">Categoria</label>
 			<div class="col-sm-10">
 				<input type="text" name="categoria" id="book-category"
-					class="form-add-book form-control" placeholder="Categoria do livro" oninput="categoryValidate()"
-					required><span class="span-off">Nome deve ter mais do que 5 caracteres</span>
+					class="form-add-book form-control" maxlength="20"
+					placeholder="Categoria do livro" oninput="categoryValidate()"
+					required><span class="span-off">Nome deve ter mais
+					do que 5 caracteres</span>
 			</div>
-			<input id="input-cadastrar" type="submit" value="Cadastrar"
-				class="btn btn-primary">
+			<button id="button-cadastrar" type="submit" class="btn btn-primary"
+				disabled>Cadastrar</button>
 
 		</form>
 	</section>
