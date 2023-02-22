@@ -81,7 +81,7 @@
 		</form>
 	</section>
 
-	<footer> Copyright 2023 Â© - Asafe Livrariaâ¢ </footer>
+	<footer> Copyright 2023 © - Livraria Asafe</footer>
 	<script type="text/javascript" src="../scripts/formValidation.js"></script>
 </body>
 </html>

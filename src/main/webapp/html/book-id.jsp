@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page import="br.com.livrariaasafe.model.JavaBeans"%>
-<%@page import="java.util.ArrayList"%>
-<%
-ArrayList<JavaBeans> list = (ArrayList<JavaBeans>) request.getAttribute("asafelibrary");
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -20,6 +17,8 @@ ArrayList<JavaBeans> list = (ArrayList<JavaBeans>) request.getAttribute("asafeli
 <link rel="shortcut icon" href="img/favicon-livro.png"
 	type="image/x-icon" />
 <link rel="stylesheet" href="css/books.css">
+<link rel="stylesheet" href="css/add-book.css">
+<link rel="stylesheet" href="css/setError.css">
 <link rel="stylesheet" href="css/validationDelete.css">
 </head>
 <body>
@@ -37,7 +36,8 @@ ArrayList<JavaBeans> list = (ArrayList<JavaBeans>) request.getAttribute("asafeli
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav">
 					<li class="nav-item active"><a class="nav-link text-white"
-						href="main">Livros<span class="sr-only">(current)</span></a></li>
+						href="http://localhost:8080/projeto-livraria/main">Livros<span
+							class="sr-only">(current)</span></a></li>
 					<li class="nav-item"><a class="nav-link text-white" href="#">Categorias</a>
 					</li>
 					<li class="nav-item"><a class="nav-link text-white" href="#">Autores</a>
@@ -46,14 +46,6 @@ ArrayList<JavaBeans> list = (ArrayList<JavaBeans>) request.getAttribute("asafeli
 			</div>
 		</nav>
 	</header>
-
-	<section id="section-filter-id">
-		<form id="form-filter-id" action="http://localhost:8080/projeto-livraria/selectid">
-			<label for="id">ID:</label> <input type="text" id="id" name="id">
-			<button type="submit">Buscar</button>
-		</form>
-	</section>
-
 	<section id="section-table-form">
 
 		<table id=table-form>
@@ -68,32 +60,25 @@ ArrayList<JavaBeans> list = (ArrayList<JavaBeans>) request.getAttribute("asafeli
 				</tr>
 			</thead>
 			<tbody>
-				<%
-				for (int i = 0; i < list.size(); i++) {
-				%>
+
 				<tr>
-					<td><%=list.get(i).getId()%></td>
-					<td><%=list.get(i).getName()%></td>
-					<td><%=list.get(i).getAuthor()%></td>
-					<td><%=list.get(i).getCategory()%></td>
-					<td><a href="select?idbook=<%=list.get(i).getId()%>"
+					<c:if test="${ javabeans != null}">
+						<td><c:out value="${ javabeans.id}" /></td>
+						<td><c:out value="${ javabeans.name}" /></td>
+						<td><c:out value="${ javabeans.author}" /></td>
+						<td><c:out value="${ javabeans.category}" /></td>
+						<td><a href="select?idbook=${ javabeans.id}"
 						class="btn btn-primary">Editar</a> <a
-						href="javascript: validation(<%=list.get(i).getId()%>)"
-						class="btn button-delete">Deletar</a></td>
+						href="javascript: validation(${ javabeans.id})"
+						class="btn btn-danger btn-book-id">Deletar</a></td>
+					</c:if>
 				</tr>
-				<%
-				}
-				%>
 			</tbody>
 		</table>
 	</section>
-	<div class="div-button-add-book">
-		<a class="btn btn-primary button-add-book"
-			href="http://localhost:8080/projeto-livraria/html/add-book.jsp">Novo
-			Livro</a>
-	</div>
 
-	<footer> Copyright 2023 © - Livraria Asafe </footer>
+
+	<footer> Copyright 2023 © - Livraria Asafe</footer>
 	<script type="text/javascript" src="scripts/validationDelete.js"></script>
 </body>
 </html>

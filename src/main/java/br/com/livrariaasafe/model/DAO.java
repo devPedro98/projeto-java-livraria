@@ -156,4 +156,45 @@ public class DAO {
 			}
 		}
 	}
+
+	public JavaBeans showBookId(String id) {
+		JavaBeans javaBeans = null;
+		String sql = "SELECT * FROM livro WHERE id = ?";
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+			Connection con = connect();
+			stmt = con.prepareStatement(sql);
+			stmt.setString(1, id);
+			rs = stmt.executeQuery();
+
+			if (rs.next()) {
+				javaBeans = new JavaBeans();
+				javaBeans.setId(rs.getString("id"));
+				javaBeans.setName(rs.getString("nome"));
+				javaBeans.setAuthor(rs.getString("autor"));
+				javaBeans.setCategory(rs.getString("categoria"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (stmt != null) {
+				try {
+					stmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		return javaBeans;
+	}
 }

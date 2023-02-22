@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 .button-add-book {
-	margin: 10px 0 10px 40px;
+	margin: 0 0 10px 30px;
 	color: white!important;
 	cursor: pointer;
 	
@@ -25,4 +25,8 @@
 	border: 1px solid #ddd;
 	padding: 10px;
 	
+}
+
+#form-filter-id {
+	margin: 15px 0 5px 25px;
 }

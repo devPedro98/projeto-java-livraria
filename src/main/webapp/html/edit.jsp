@@ -79,12 +79,12 @@
 					value="<%out.print(request.getAttribute("categoria"));%>" required><span
 					class="span-off">Nome deve ter mais do que 5 caracteres</span>
 			</div>
-			<input id="input-cadastrar" type="submit" value="Cadastrar"
+			<input id="input-cadastrar" type="submit" value="Atualizar"
 				class="btn btn-primary">
 		</form>
 	</section>
 
-	<footer> Copyright 2023 Â© - Asafe Livrariaâ¢ </footer>
+	<footer> Copyright 2023 © - Livraria Asafe </footer>
 	<script type="text/javascript" src="scripts/formValidation.js"></script>
 </body>
 </html>
