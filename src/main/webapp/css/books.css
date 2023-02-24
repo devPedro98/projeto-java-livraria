@@ -27,6 +27,40 @@
 	
 }
 
-#form-filter-id {
-	margin: 15px 0 5px 25px;
+/* Estilos para o container de busca */
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Estilos para a caixa de texto de busca */
+.search-container input[type=text] {
+  padding: 10px;
+  border: 2px solid black;
+  font-size: 17px;
+  border-radius: 5px 0 0 5px;
+}
+
+/* Estilos para o botão de busca */
+.search-container button {
+  padding: 10px;
+  border: none;
+  font-size: 17px;
+  background: #4285F4;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 0 5px 5px 0;
+}
+
+/* Estilos para o ícone de busca no botão */
+.search-container button i {
+  margin-left: 5px;
+}
+
+
+/* Tabela do arquivo book-id.jsp*/
+
+#section-table-form {
+	margin-top: 15px;
 }

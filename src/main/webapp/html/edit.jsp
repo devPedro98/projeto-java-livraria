@@ -65,7 +65,8 @@
 			<label for="book-author"
 				class="col-sm-2 col-form-label label-add-book">Autor</label>
 			<div class="col-sm-10">
-				<input type="text" name="autor" id="book-author"
+				<input type="text" pattern="^[a-zA-Z]+$ 
+				" title="Este campo não aceita números" oninvalid="" name="autor" id="book-author"
 					class="form-add-book form-control" oninput="authorValidate()"
 					value="<%out.print(request.getAttribute("autor"));%>" required><span
 					class="span-off">Autor deve ter mais do que 8 caracteres</span>
@@ -74,7 +75,8 @@
 			<label for="book-category"
 				class="col-sm-2 col-form-label col-form-label-lg label-add-book">Categoria</label>
 			<div class="col-sm-10">
-				<input type="text" name="categoria" id="book-category"
+				<input type="text" pattern="^[a-zA-Z]+$ 
+				" title="Este campo não aceita número" oninvalid="" name="categoria" id="book-category"
 					class="form-add-book form-control" oninput="categoryValidate()"
 					value="<%out.print(request.getAttribute("categoria"));%>" required><span
 					class="span-off">Nome deve ter mais do que 5 caracteres</span>

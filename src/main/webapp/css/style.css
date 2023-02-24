@@ -1,22 +1,39 @@
+* {
+	font-family: 'Exo 2', sans-serif;
+}
+
 html {
 	height: 100%;
 	min-height: 100%;
+}
+
+.img-background {
+	background-size: cover;
+	background-position: center center;
+	background-attachment: fixed;
 }
 
 body {
 	display: flex;
 	flex-direction: column;
 	min-height: 100%;
+	
+}
+
+.body-index {
+	background-image: url('../img/livro-velho-aberto-em-uma-mesa-de-madeira-visto-de-cima.jpg');
+	background-size: cover;
+	background-position: center center;
+	background-attachment: fixed;
 }
 
 .navbar {
 	padding: 0.5rem 2.0rem;
 }
 
-.welcome-library {
-	font-size: 32px;
-	text-align: center;
-	margin: 13px 0;
+.welcome-asafe-library {
+	color: #EEE;
+	text-align: center!important;
 }
 
 .form-inline .form-control {

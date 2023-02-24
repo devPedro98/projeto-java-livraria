@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="PT-BR">
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -60,7 +60,8 @@
 			<label for="book-author"
 				class="col-sm-2 col-form-label label-add-book">Autor</label>
 			<div class="col-sm-10">
-				<input type="text" name="autor" id="book-author"
+				<input type="text" pattern="^[a-zA-Z]+$ 
+				" title="Este campo não aceita número" oninvalid="" name="autor" id="book-author"
 					class="form-add-book form-control" maxlength="20"
 					placeholder="Autor do livro" oninput="authorValidate()" required><span
 					class="span-off">Autor deve ter mais do que 8 caracteres</span>
@@ -69,7 +70,8 @@
 			<label for="book-category"
 				class="col-sm-2 col-form-label col-form-label-lg label-add-book">Categoria</label>
 			<div class="col-sm-10">
-				<input type="text" name="categoria" id="book-category"
+				<input type="text" pattern="^[a-zA-Z]+$ 
+				" title="Este campo não aceita número" oninvalid="" name="categoria" id="book-category"
 					class="form-add-book form-control" maxlength="20"
 					placeholder="Categoria do livro" oninput="categoryValidate()"
 					required><span class="span-off">Nome deve ter mais
