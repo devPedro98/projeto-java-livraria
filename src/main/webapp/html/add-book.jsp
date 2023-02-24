@@ -19,30 +19,7 @@
 <link rel="stylesheet" href="../css/setError.css">
 </head>
 <body>
-	<header>
-		<nav class="navbar navbar-expand-lg navbar-light bg-dark">
-			<a class="navbar-brand text-white"
-				href="http://localhost:8080/projeto-livraria/index.html">Asafe
-				Livraria</a>
-			<button class="navbar-toggler bg-light" type="button"
-				data-toggle="collapse" data-target="#navbarNav"
-				aria-controls="navbarNav" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarNav">
-				<ul class="navbar-nav">
-					<li class="nav-item active"><a class="nav-link text-white"
-						href="http://localhost:8080/projeto-livraria/main">Livros<span
-							class="sr-only">(current)</span></a></li>
-					<li class="nav-item"><a class="nav-link text-white" href="#">Categorias</a>
-					</li>
-					<li class="nav-item"><a class="nav-link text-white" href="#">Autores</a>
-					</li>
-				</ul>
-			</div>
-		</nav>
-	</header>
+	<%@ include file="../includes/header.jsp"%>
 
 	<section>
 		<form id="add-book"
@@ -60,9 +37,7 @@
 			<label for="book-author"
 				class="col-sm-2 col-form-label label-add-book">Autor</label>
 			<div class="col-sm-10">
-				<input type="text" pattern="^[a-zA-Z]+$ 
-				" title="Este campo só aceita letras" name="autor" id="book-author"
-					class="form-add-book form-control" maxlength="20"
+				<input type="text" pattern="^[a-zA-ZÀ-ÿ]+(?: [a-zA-ZÀ-ÿ]+)*$" title="Este campo só aceita letras" name="autor" id="book-author"class="form-add-book form-control" maxlength="20"
 					placeholder="Autor do livro" oninput="authorValidate()" required><span
 					class="span-off">Autor deve ter mais do que 8 caracteres</span>
 			</div>
@@ -70,12 +45,12 @@
 			<label for="book-category"
 				class="col-sm-2 col-form-label col-form-label-lg label-add-book">Categoria</label>
 			<div class="col-sm-10">
-				<input type="text" pattern="^[a-zA-Z]+$ 
-				" title="Este campo só aceita letras" name="categoria" id="book-category"
-					class="form-add-book form-control" maxlength="20"
-					placeholder="Categoria do livro" oninput="categoryValidate()"
-					required><span class="span-off">Nome deve ter mais
-					do que 5 caracteres</span>
+				<input type="text" pattern="^[a-zA-ZÀ-ÿ]+(?: [a-zA-ZÀ-ÿ]+)*$"
+					title="Este campo só aceita letras" name="categoria"
+					id="book-category" class="form-add-book form-control"
+					maxlength="20" placeholder="Categoria do livro"
+					oninput="categoryValidate()" required><span
+					class="span-off">Nome deve ter mais do que 5 caracteres</span>
 			</div>
 			<button id="button-cadastrar" type="submit" class="btn btn-primary"
 				disabled>Cadastrar</button>
