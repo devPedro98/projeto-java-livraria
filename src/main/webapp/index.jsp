@@ -36,9 +36,9 @@
 
 	</main>
 
-	<footer> Copyright 2023 © - Livraria Asafe™ </footer>
 
-
+	<%@ include file="includes/footer.jsp" %>
+	
 	<script src="https://kit.fontawesome.com/c742a003d1.js"
 		crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

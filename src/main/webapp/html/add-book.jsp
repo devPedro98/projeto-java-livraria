@@ -58,7 +58,7 @@
 		</form>
 	</section>
 
-	<footer> Copyright 2023 © - Livraria Asafe</footer>
+	<%@ include file="../includes/footer.jsp" %>
 	<script type="text/javascript" src="../scripts/formValidation.js"></script>
 </body>
 </html>

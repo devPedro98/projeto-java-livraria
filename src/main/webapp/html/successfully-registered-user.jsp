@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -17,35 +19,12 @@
 </head>
 
 <body>
-	<header>
-		<nav class="navbar navbar-expand-lg navbar-light bg-dark">
-			<a class="navbar-brand text-white"
-				href="http://localhost:8080/projeto-livraria/index.html">Asafe
-				Livraria</a>
-			<button class="navbar-toggler bg-light" type="button"
-				data-toggle="collapse" data-target="#navbarNav"
-				aria-controls="navbarNav" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarNav">
-				<ul class="navbar-nav">
-					<li class="nav-item active"><a class="nav-link text-white"
-						href="http://localhost:8080/projeto-livraria/main">Livros<span
-							class="sr-only">(current)</span></a></li>
-					<li class="nav-item"><a class="nav-link text-white" href="#">Categorias</a>
-					</li>
-					<li class="nav-item"><a class="nav-link text-white" href="#">Autores</a>
-					</li>
-				</ul>
-			</div>
-		</nav>
-	</header>
+	<%@ include file="../includes/header.jsp" %>
 
 	<section class="container-fluid">
 		<div class="success-message">
 			<i class="fa fa-check-circle"></i>
-			<p>O livro foi atualizado com sucesso</p>
+			<p>O livro foi cadastrado com sucesso</p>
 		</div>
 
 
@@ -61,7 +40,8 @@
 
 
 
-	<footer> Copyright 2023 © - Livraria Asafe™ </footer>
+
+	<%@ include file="../includes/footer.jsp" %>
 
 
 	<script src="https://kit.fontawesome.com/c742a003d1.js"

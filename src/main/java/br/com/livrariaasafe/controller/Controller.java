@@ -66,7 +66,7 @@ public class Controller extends HttpServlet {
 		book.setAuthor(request.getParameter(BOOKAUTOR));
 		book.setCategory(request.getParameter(BOOKCATEGORY));
 		dao.changeBook(book);
-		response.sendRedirect("html/successfully-updated.html");
+		response.sendRedirect("html/successfully-updated.jsp");
 	}
 
 	protected void fillFormUpdateBook(HttpServletRequest request, HttpServletResponse response)
@@ -89,7 +89,7 @@ public class Controller extends HttpServlet {
 			book.setAuthor(req.getParameter(BOOKAUTOR));
 			book.setCategory(req.getParameter(BOOKCATEGORY));
 			dao.createBook(book);
-			resp.sendRedirect("html/successfully-registered-user.html");
+			resp.sendRedirect("html/successfully-registered-user.jsp");
 		} catch (IOException e) {
 			logger.log(Level.WARNING, e.toString(), e);
 		}
