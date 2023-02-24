@@ -49,7 +49,7 @@ ArrayList<JavaBeans> list = (ArrayList<JavaBeans>) request.getAttribute("asafeli
 
 	<section class="search-container">
 		<form action="http://localhost:8080/projeto-livraria/selectid">
-			<input type="text" pattern="^[0-9]+$" title="O campo ID só aceita números maior do que 0" oninvalid="" placeholder="ID" name="id">
+			<input type="text" pattern="^[0-9]+$" title="O campo ID só aceita números maior do que 0" placeholder="ID" name="id">
 			<button type="submit">
 				<i class="fa fa-search">Buscar</i>
 			</button>
