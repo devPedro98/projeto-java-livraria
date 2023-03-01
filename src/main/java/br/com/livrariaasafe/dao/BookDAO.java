@@ -16,7 +16,7 @@ public class BookDAO {
 	}
 	
 	public void register(Book book) {
-		this.em.persist(book);
+		this.em.merge(book);
 	}
 	
 	public List<Book> readAllBooks(){

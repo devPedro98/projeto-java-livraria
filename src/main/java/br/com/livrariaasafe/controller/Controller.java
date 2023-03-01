@@ -23,10 +23,8 @@ import br.com.livrariaasafe.util.JPAUtil;
 public class Controller extends HttpServlet {
 	final Logger logger = Logger.getLogger(Controller.class.getName());
 	private static final long serialVersionUID = 1L;
-	private static EntityManager em = JPAUtil.getEntityManager();
-	private static BookDAO bookDAO = new BookDAO(em);
 	static DAO dao = new DAO();
-	private Book bookJavaBeans = new Book();
+	private static Book bookJavaBeans = new Book();
 	static JavaBeans book = new JavaBeans();
 	private static final String BOOKID = "id";
 	private static final String BOOKNAME = "nome";
@@ -91,6 +89,8 @@ public class Controller extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		EntityManager em = JPAUtil.getEntityManager();
+		BookDAO bookDAO = new BookDAO(em);
 		try {
 			bookJavaBeans.setName(req.getParameter(BOOKNAME));
 			bookJavaBeans.setAuthor(req.getParameter(BOOKAUTOR));
@@ -108,6 +108,8 @@ public class Controller extends HttpServlet {
 
 	protected void showBooks(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		EntityManager em = JPAUtil.getEntityManager();
+		BookDAO bookDAO = new BookDAO(em);
 		List<Book> list = bookDAO.readAllBooks();
 		request.setAttribute("asafelibrary", list);
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("html/books.jsp");
