@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page import="br.com.livrariaasafe.model.JavaBeans"%>
+<%@page import="br.com.livrariaasafe.model.Book"%>
 <%@page import="java.util.ArrayList"%>
 <%
-ArrayList<JavaBeans> list = (ArrayList<JavaBeans>) request.getAttribute("asafelibrary");
+ArrayList<Book> list = (ArrayList<Book>) request.getAttribute("asafelibrary");
 %>
 <!DOCTYPE html>
 <html lang="pt-br">
