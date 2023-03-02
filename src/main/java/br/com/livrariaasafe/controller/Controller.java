@@ -65,11 +65,15 @@ public class Controller extends HttpServlet {
 	}
 
 	protected void updateBook(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		book.setId(request.getParameter(BOOKID));
-		book.setName(request.getParameter(BOOKNAME));
-		book.setAuthor(request.getParameter(BOOKAUTOR));
-		book.setCategory(request.getParameter(BOOKCATEGORY));
-		dao.changeBook(book);
+		Book bookJavaBeans = new Book();
+		BookDAO bookDAO = new BookDAO();
+		String idString = request.getParameter(BOOKID);
+		Long idLong = Long.parseLong(idString);
+		bookJavaBeans.setId(idLong);
+		bookJavaBeans.setName(request.getParameter(BOOKNAME));
+		bookJavaBeans.setAuthor(request.getParameter(BOOKAUTOR));
+		bookJavaBeans.setCategory(request.getParameter(BOOKCATEGORY));
+		bookDAO.updateBook(bookJavaBeans);
 		response.sendRedirect("html/successfully-updated.jsp");
 	}
 

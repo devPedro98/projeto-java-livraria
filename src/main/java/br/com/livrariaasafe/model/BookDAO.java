@@ -25,5 +25,12 @@ public class BookDAO {
 	public Book selectId(Long id) {
 		return em.find(Book.class, id);
 	}
+	
+	public void updateBook(Book book) {
+		em.getTransaction().begin();
+		em.merge(book);
+		em.getTransaction().commit();
+		em.close();
+	}
 
 }
