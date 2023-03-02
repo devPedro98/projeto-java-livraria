@@ -57,9 +57,12 @@ public class Controller extends HttpServlet {
 	}
 
 	protected void removeBook(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		Book bookJavaBeans = new Book();
+		BookDAO bookDAO = new BookDAO();
 		String id = request.getParameter("id");
-		book.setId(id);
-		dao.removeBook(book);
+		Long idLong = Long.parseLong(id);
+		bookJavaBeans.setId(idLong);
+		bookDAO.deleteBook(bookJavaBeans);
 		response.sendRedirect("main");
 
 	}

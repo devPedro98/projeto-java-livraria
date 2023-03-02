@@ -32,5 +32,13 @@ public class BookDAO {
 		em.getTransaction().commit();
 		em.close();
 	}
+	
+	public void deleteBook(Book book) {
+		em.getTransaction().begin();
+		book = em.find(Book.class, book.getId());
+		em.remove(book);
+		em.getTransaction().commit();
+		em.close();
+	}
 
 }
