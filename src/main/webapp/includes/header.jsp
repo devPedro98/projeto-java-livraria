@@ -15,10 +15,7 @@
 					class="nav-link text-white font-asafe-library" href="http://localhost:8080/projeto-livraria/main">Livros<span
 						class="sr-only">(current)</span></a></li>
 				<li class="nav-item"><a
-					class="nav-link text-white font-asafe-library" href="#">Categorias</a>
-				</li>
-				<li class="nav-item"><a
-					class="nav-link text-white font-asafe-library" href="#">Autores</a>
+					class="nav-link text-white font-asafe-library" href="http://localhost:8080/projeto-livraria/html/reader.jsp">Leitores</a>
 				</li>
 			</ul>
 		</div>
