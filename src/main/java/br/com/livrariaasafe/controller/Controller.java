@@ -79,7 +79,7 @@ public class Controller extends HttpServlet {
 		BookDAO bookDAO = new BookDAO();
 		String idBook = request.getParameter("idbook");
 		bookJavaBeans.setId(Long.parseLong(idBook));
-		bookDAO.selectId(Long.parseLong(idBook));
+		bookJavaBeans = bookDAO.selectId(Long.parseLong(idBook));
 		request.setAttribute(BOOKID, bookJavaBeans.getId());
 		request.setAttribute(BOOKNAME, bookJavaBeans.getName());
 		request.setAttribute(BOOKAUTOR, bookJavaBeans.getAuthor());
