@@ -5,14 +5,17 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class JPAUtil {
-	
+
 	private JPAUtil() {
-		
+
 	}
-	
-	private static final EntityManagerFactory FACTORY = Persistence.createEntityManagerFactory("livraria");
+
+	private static EntityManagerFactory factory;
 
 	public static EntityManager getEntityManager() {
-		return FACTORY.createEntityManager();
+		if(factory == null) {
+			factory = Persistence.createEntityManagerFactory("livraria");
+		}
+		return factory.createEntityManager();
 	}
 }

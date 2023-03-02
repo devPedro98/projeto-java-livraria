@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@page import="br.com.livrariaasafe.model.Book"%>
+<%@page import="java.util.ArrayList"%>
+<%
+Book book = (Book) request.getAttribute("book");
+%>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -19,41 +24,44 @@
 <link rel="stylesheet" href="css/setError.css">
 </head>
 <body>
-	<%@ include file="../includes/header.jsp" %>
+	<%@ include file="../includes/header.jsp"%>
 
 	<section>
-		<form id="add-book"
-			action="update">
+		<form id="add-book" action="update">
 			<label
 				class="col-sm-2 col-form-label col-form-label-sm label-add-book">ID</label>
 			<div class="col-sm-10">
 				<input type="text" name="id" id="book-id" class="form-control"
-					value="<%out.print(request.getAttribute("id"));%>" readonly>
+					value="<%out.print(book.getId());%>" readonly>
 			</div>
 			<label for="book-name"
 				class="col-sm-2 col-form-label col-form-label-sm label-add-book">Nome</label>
 			<div class="col-sm-10">
 				<input type="text" name="nome" id="book-name"
 					class="form-add-book form-control" oninput="nameValidate()"
-					value="<%out.print(request.getAttribute("nome"));%>" required>
+					value="<%out.print(book.getName());%>" required>
 				<span class="span-off">Nome deve ter mais do que 8 caracteres</span>
 			</div>
 
 			<label for="book-author"
 				class="col-sm-2 col-form-label label-add-book">Autor</label>
 			<div class="col-sm-10">
-				<input type="text" pattern="^[a-zA-ZÀ-ÿ]+(?: [a-zA-ZÀ-ÿ]+)*$" title="Este campo só aceita letras" oninvalid="" name="autor" id="book-author"
-					class="form-add-book form-control" oninput="authorValidate()"
-					value="<%out.print(request.getAttribute("autor"));%>" required><span
+				<input type="text" pattern="^[a-zA-ZÀ-ÿ]+(?: [a-zA-ZÀ-ÿ]+)*$"
+					title="Este campo só aceita letras" oninvalid="" name="autor"
+					id="book-author" class="form-add-book form-control"
+					oninput="authorValidate()"
+					value="<%out.print(book.getAuthor());%>" required><span
 					class="span-off">Autor deve ter mais do que 8 caracteres</span>
 			</div>
 
 			<label for="book-category"
 				class="col-sm-2 col-form-label col-form-label-lg label-add-book">Categoria</label>
 			<div class="col-sm-10">
-				<input type="text" pattern="^[a-zA-ZÀ-ÿ]+(?: [a-zA-ZÀ-ÿ]+)*$" title="Este campo só aceita letras" name="categoria" id="book-category"
-					class="form-add-book form-control" oninput="categoryValidate()"
-					value="<%out.print(request.getAttribute("categoria"));%>" required><span
+				<input type="text" pattern="^[a-zA-ZÀ-ÿ]+(?: [a-zA-ZÀ-ÿ]+)*$"
+					title="Este campo só aceita letras" name="categoria"
+					id="book-category" class="form-add-book form-control"
+					oninput="categoryValidate()"
+					value="<%out.print(book.getCategory());%>" required><span
 					class="span-off">Nome deve ter mais do que 5 caracteres</span>
 			</div>
 			<input id="input-cadastrar" type="submit" value="Atualizar"
@@ -61,7 +69,7 @@
 		</form>
 	</section>
 
-	<%@ include file="../includes/footer.jsp" %>
+	<%@ include file="../includes/footer.jsp"%>
 	<script type="text/javascript" src="scripts/formValidation.js"></script>
 </body>
 </html>

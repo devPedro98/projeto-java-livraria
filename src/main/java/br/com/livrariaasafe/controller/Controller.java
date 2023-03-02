@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.livrariaasafe.dao.BookDAO;
 import br.com.livrariaasafe.model.Book;
+import br.com.livrariaasafe.model.BookDAO;
 import br.com.livrariaasafe.model.DAO;
 import br.com.livrariaasafe.model.JavaBeans;
 import br.com.livrariaasafe.util.JPAUtil;
@@ -24,7 +24,6 @@ public class Controller extends HttpServlet {
 	final Logger logger = Logger.getLogger(Controller.class.getName());
 	private static final long serialVersionUID = 1L;
 	static DAO dao = new DAO();
-	private static Book bookJavaBeans = new Book();
 	static JavaBeans book = new JavaBeans();
 	private static final String BOOKID = "id";
 	private static final String BOOKNAME = "nome";
@@ -76,29 +75,29 @@ public class Controller extends HttpServlet {
 
 	protected void fillFormUpdateBook(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		Book bookJavaBeans = new Book();
+		BookDAO bookDAO = new BookDAO();
 		String idBook = request.getParameter("idbook");
-		book.setId(idBook);
-		dao.selectBook(book);
-		request.setAttribute(BOOKID, book.getId());
-		request.setAttribute(BOOKNAME, book.getName());
-		request.setAttribute(BOOKAUTOR, book.getAuthor());
-		request.setAttribute(BOOKCATEGORY, book.getCategory());
+		bookJavaBeans.setId(Long.parseLong(idBook));
+		bookDAO.selectId(Long.parseLong(idBook));
+		request.setAttribute(BOOKID, bookJavaBeans.getId());
+		request.setAttribute(BOOKNAME, bookJavaBeans.getName());
+		request.setAttribute(BOOKAUTOR, bookJavaBeans.getAuthor());
+		request.setAttribute(BOOKCATEGORY, bookJavaBeans.getCategory());
+		request.setAttribute("book", bookJavaBeans);
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("html/edit.jsp");
 		requestDispatcher.forward(request, response);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		EntityManager em = JPAUtil.getEntityManager();
-		BookDAO bookDAO = new BookDAO(em);
 		try {
+			Book bookJavaBeans = new Book();
+			BookDAO bookDAO = new BookDAO();
 			bookJavaBeans.setName(req.getParameter(BOOKNAME));
 			bookJavaBeans.setAuthor(req.getParameter(BOOKAUTOR));
 			bookJavaBeans.setCategory(req.getParameter(BOOKCATEGORY));
-			em.getTransaction().begin();
 			bookDAO.register(bookJavaBeans);
-			em.getTransaction().commit();
-			em.close();
 			resp.sendRedirect("html/successfully-registered-user.jsp");
 		} catch (IOException e) {
 			logger.log(Level.WARNING, e.toString(), e);
@@ -108,8 +107,7 @@ public class Controller extends HttpServlet {
 
 	protected void showBooks(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		EntityManager em = JPAUtil.getEntityManager();
-		BookDAO bookDAO = new BookDAO(em);
+		BookDAO bookDAO = new BookDAO();
 		List<Book> list = bookDAO.readAllBooks();
 		request.setAttribute("asafelibrary", list);
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("html/books.jsp");
