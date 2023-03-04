@@ -14,8 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.livrariaasafe.model.Book;
 import br.com.livrariaasafe.model.BookDAO;
-import br.com.livrariaasafe.model.DAO;
-import br.com.livrariaasafe.model.JavaBeans;
 
 @WebServlet(urlPatterns = { "/Controller", "/main", "/select", "/update", "/delete" })
 public class Controller extends HttpServlet {

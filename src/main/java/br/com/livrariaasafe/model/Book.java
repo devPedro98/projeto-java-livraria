@@ -1,9 +1,13 @@
 package br.com.livrariaasafe.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -16,6 +20,8 @@ public class Book {
 	private String name;
 	private String author;
 	private String category;
+	@OneToMany(mappedBy = "book")
+	private List<Person> people = new ArrayList<>();
 
 	public Book(String name, String author, String category) {
 		super();

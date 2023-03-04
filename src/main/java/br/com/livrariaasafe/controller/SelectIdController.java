@@ -39,7 +39,6 @@ public class SelectIdController extends HttpServlet {
 		BookDAO bookDAO = new BookDAO();
 		String id = request.getParameter("id");
 		Long idLong = Long.parseLong(id);
-//		JavaBeans javaBeans = dao.showBookId(id);
 		Book bookJavaBeans = bookDAO.selectId(idLong);
 		request.setAttribute("javabeans", bookJavaBeans);
 		request.getRequestDispatcher("html/book-id.jsp").forward(request, response);
