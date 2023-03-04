@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.persistence.EntityManager;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,11 +16,10 @@ import br.com.livrariaasafe.model.Book;
 import br.com.livrariaasafe.model.BookDAO;
 import br.com.livrariaasafe.model.DAO;
 import br.com.livrariaasafe.model.JavaBeans;
-import br.com.livrariaasafe.util.JPAUtil;
 
 @WebServlet(urlPatterns = { "/Controller", "/main", "/select", "/update", "/delete" })
 public class Controller extends HttpServlet {
-	final Logger logger = Logger.getLogger(Controller.class.getName());
+	private final Logger logger = Logger.getLogger(Controller.class.getName());
 	private static final long serialVersionUID = 1L;
 	static DAO dao = new DAO();
 	static JavaBeans book = new JavaBeans();

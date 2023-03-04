@@ -17,41 +17,24 @@
 <link rel="stylesheet" href="../css/books.css">
 <link rel="stylesheet" href="../css/add-book.css">
 <link rel="stylesheet" href="../css/setError.css">
-<link rel="stylesheet" href="../css/reader.css">
-
+<link rel="stylesheet" href="../css/register-person.css">
 </head>
 <body>
 	<%@ include file="../includes/header.jsp"%>
-	<table>
-	<caption></caption>
-		<thead>
-			<tr>
-				<th>Nome</th>
-				<th>Sobrenome</th>
-				<th>Livro que está lendo</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>João</td>
-				<td>Silva</td>
-				<td>Dom Casmurro</td>
-			</tr>
-			<tr>
-				<td>Maria</td>
-				<td>Souza</td>
-				<td>O Príncipe</td>
-			</tr>
-			<tr>
-				<td>Pedro</td>
-				<td>Ribeiro</td>
-				<td>Guerra e Paz</td>
-			</tr>
-		</tbody>
-	</table>
+
+	<form>
+		<label for="nome">Nome:</label> <input type="text" id="nome"
+			name="nome" required> <label for="sobrenome">Sobrenome:</label>
+		<input type="text" id="sobrenome" name="sobrenome" required> <label
+			for="livro">Livro que está lendo:</label> <input type="text"
+			id="livro" name="livro" required> <input type="submit"
+			value="Cadastrar">
+	</form>
+
 	
-	<a id="botao-cadastrar" href="http://localhost:8080/projeto-livraria/html/register-person.jsp">Cadastrar leitor</a>
-	
+
+
 	<%@ include file="../includes/footer.jsp"%>
+	<script type="text/javascript" src="../scripts/formValidation.js"></script>
 </body>
 </html>

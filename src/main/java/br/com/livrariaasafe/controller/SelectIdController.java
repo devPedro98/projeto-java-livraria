@@ -10,12 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.livrariaasafe.model.Book;
 import br.com.livrariaasafe.model.BookDAO;
-import br.com.livrariaasafe.model.DAO;
-import br.com.livrariaasafe.model.JavaBeans;
 
 @WebServlet(urlPatterns = { "/SelectIdController", "/selectid" })
 public class SelectIdController extends HttpServlet {
-	private static DAO dao = new DAO();
 	private static final long serialVersionUID = 1L;
 
 	public SelectIdController() {
