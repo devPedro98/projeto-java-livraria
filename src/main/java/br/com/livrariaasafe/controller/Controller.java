@@ -21,8 +21,6 @@ import br.com.livrariaasafe.model.JavaBeans;
 public class Controller extends HttpServlet {
 	private final Logger logger = Logger.getLogger(Controller.class.getName());
 	private static final long serialVersionUID = 1L;
-	static DAO dao = new DAO();
-	static JavaBeans book = new JavaBeans();
 	private static final String BOOKID = "id";
 	private static final String BOOKNAME = "nome";
 	private static final String BOOKAUTOR = "autor";
