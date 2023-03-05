@@ -66,4 +66,12 @@ public class Book {
 		this.category = category;
 	}
 
+	public List<Person> getPeople() {
+		return people;
+	}
+
+	public void setPeople(List<Person> people) {
+		this.people = people;
+	}
+
 }

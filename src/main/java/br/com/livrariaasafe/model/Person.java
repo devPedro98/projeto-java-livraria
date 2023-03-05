@@ -18,7 +18,7 @@ public class Person {
 	private String surname;
 	@ManyToOne
 	private Book book;
-
+	
 	public Long getId() {
 		return id;
 	}
