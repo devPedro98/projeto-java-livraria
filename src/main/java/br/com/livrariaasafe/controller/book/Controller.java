@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.persistence.RollbackException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -51,13 +52,19 @@ public class Controller extends HttpServlet {
 	}
 
 	protected void removeBook(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		Book bookJavaBeans = new Book();
-		BookDAO bookDAO = new BookDAO();
-		String id = request.getParameter("id");
-		Long idLong = Long.parseLong(id);
-		bookJavaBeans.setId(idLong);
-		bookDAO.deleteBook(bookJavaBeans);
-		response.sendRedirect("main");
+		try {
+			Book bookJavaBeans = new Book();
+			BookDAO bookDAO = new BookDAO();
+			String id = request.getParameter("id");
+			Long idLong = Long.parseLong(id);
+			bookJavaBeans.setId(idLong);
+			bookDAO.deleteBook(bookJavaBeans);
+			response.sendRedirect("main");
+			
+		} catch (RollbackException e) {
+			e.printStackTrace();
+			response.sendRedirect("error/error-delete-book.html");
+		}
 
 	}
 
