@@ -34,6 +34,7 @@ ArrayList<Person> list = (ArrayList<Person>) request.getAttribute("persondao");
 				<th>Nome</th>
 				<th>Sobrenome</th>
 				<th>Livro que está lendo</th>
+				<th>Opções</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -44,6 +45,8 @@ ArrayList<Person> list = (ArrayList<Person>) request.getAttribute("persondao");
 				<td><%=list.get(i).getName()%></td>
 				<td><%=list.get(i).getSurname()%></td>
 				<td><%=list.get(i).getBook().getName()%></td>
+				<td><button type="submit" class="update-button">Atualizar</button>
+					<button type="submit" class="delete-button">Deletar</button></td>
 				<%
 				}
 				%>
@@ -51,8 +54,7 @@ ArrayList<Person> list = (ArrayList<Person>) request.getAttribute("persondao");
 		</tbody>
 	</table>
 
-	<a id="botao-cadastrar"
-		href="ShowBooksRegisterPerson">Cadastrar
+	<a id="botao-cadastrar" href="ShowBooksRegisterPerson">Cadastrar
 		leitor</a>
 
 	<%@ include file="../includes/footer.jsp"%>
