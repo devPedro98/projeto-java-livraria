@@ -46,7 +46,7 @@ ArrayList<Person> list = (ArrayList<Person>) request.getAttribute("persondao");
 				<td><%=list.get(i).getSurname()%></td>
 				<td><%=list.get(i).getBook().getName()%></td>
 				<td><a href="#" class="update-button">Atualizar</a>
-					<a href="#" class="delete-button">Deletar</a></td>
+					<a href="javascript: validation(<%=list.get(i).getId()%>)" class="delete-button">Deletar</a></td>
 				<%
 				}
 				%>
@@ -58,5 +58,6 @@ ArrayList<Person> list = (ArrayList<Person>) request.getAttribute("persondao");
 		leitor</a>
 
 	<%@ include file="../includes/footer.jsp"%>
+	<script type="text/javascript" src="scripts/validationDeletePerson.js"></script>
 </body>
 </html>

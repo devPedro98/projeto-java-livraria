@@ -24,4 +24,12 @@ public class PersonDAO {
 		em.getTransaction().commit();
 		em.close();
 	}
+	
+	public void deletePerson(Person person) {
+		em.getTransaction().begin();
+		person = em.find(Person.class, person.getId());
+		em.remove(person);
+		em.getTransaction().commit();
+		em.close();
+	}
 }
