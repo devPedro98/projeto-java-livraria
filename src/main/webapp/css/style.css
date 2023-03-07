@@ -17,14 +17,13 @@ body {
 	display: flex;
 	flex-direction: column;
 	min-height: 100%;
-	
 }
 
-.body-index {
-	background-image: url('../img/livro-velho-aberto-em-uma-mesa-de-madeira-visto-de-cima.jpg');
-	background-size: cover;
-	background-position: center center;
-	background-attachment: fixed;
+.welcome {
+	font-size: 24px;
+	line-height: 1.5;
+	text-align: center;
+	margin: 50px 0;
 }
 
 .navbar {
@@ -33,7 +32,7 @@ body {
 
 .welcome-asafe-library {
 	color: #EEE;
-	text-align: center!important;
+	text-align: center !important;
 }
 
 .form-inline .form-control {

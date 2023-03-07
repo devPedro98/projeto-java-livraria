@@ -45,8 +45,8 @@ ArrayList<Person> list = (ArrayList<Person>) request.getAttribute("persondao");
 				<td><%=list.get(i).getName()%></td>
 				<td><%=list.get(i).getSurname()%></td>
 				<td><%=list.get(i).getBook().getName()%></td>
-				<td><button type="submit" class="update-button">Atualizar</button>
-					<button type="submit" class="delete-button">Deletar</button></td>
+				<td><a href="#" class="update-button">Atualizar</a>
+					<a href="#" class="delete-button">Deletar</a></td>
 				<%
 				}
 				%>

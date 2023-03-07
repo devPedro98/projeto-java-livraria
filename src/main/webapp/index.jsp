@@ -25,20 +25,30 @@
 </head>
 
 <body class="body-index">
-	<%@ include file="includes/header.jsp" %>
+	<%@ include file="includes/header.jsp"%>
 	<main>
-		<div class="background-image">
-			<h2 class="welcome-asafe-library">Seja bem vindo a Livraria
-				Asafe</h2>
-		</div>
 
+
+		<p class="welcome">Bem-vindo à nossa livraria! Aqui você encontrará uma grande
+			variedade de livros para todos os gostos e interesses. Temos uma
+			vasta coleção de livros dos mais diversos gêneros, desde romance até
+			ficção científica. Além disso, oferecemos um cadastro fácil e rápido
+			para novos leitores, permitindo que você tenha acesso a todas as
+			vantagens da nossa livraria. Mas não é só isso! Oferecemos também a
+			possibilidade de atualizar e apagar suas informações de cadastro,
+			para que você possa manter seus dados sempre atualizados. E se você
+			quiser contribuir para a nossa coleção, pode inserir novos livros
+			para que outros leitores possam desfrutar. Não perca mais tempo e
+			venha conhecer a nossa livraria. Temos certeza de que você encontrará
+			o livro que está procurando e se sentirá em casa em nossa comunidade
+			de leitores apaixonados!</p>
 
 
 	</main>
 
 
-	<%@ include file="includes/footer.jsp" %>
-	
+	<%@ include file="includes/footer.jsp"%>
+
 	<script src="https://kit.fontawesome.com/c742a003d1.js"
 		crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

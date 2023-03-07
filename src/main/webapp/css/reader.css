@@ -30,7 +30,7 @@ tr:hover {
 }
 
 .update-button, .delete-button {
-	text-decoration: none;
+	text-decoration: none!important;
 	text-align: center;
 	display: inline-block;
 	width: 100px;
