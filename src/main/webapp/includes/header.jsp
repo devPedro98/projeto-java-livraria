@@ -15,7 +15,7 @@
 					class="nav-link text-white font-asafe-library" href="http://localhost:8080/projeto-livraria/main">Livros<span
 						class="sr-only">(current)</span></a></li>
 				<li class="nav-item"><a
-					class="nav-link text-white font-asafe-library" href="http://localhost:8080/projeto-livraria/PersonController">Leitores</a>
+					class="nav-link text-white font-asafe-library" href="GetPersonNameController">Leitores</a>
 				</li>
 			</ul>
 		</div>

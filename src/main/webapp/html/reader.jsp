@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page import="br.com.livrariaasafe.model.Person"%>
+<%@page import="br.com.livrariaasafe.model.person.Person"%>
 <%@page import="java.util.ArrayList"%>
 <%
 ArrayList<Person> list = (ArrayList<Person>) request.getAttribute("persondao");
@@ -52,7 +52,7 @@ ArrayList<Person> list = (ArrayList<Person>) request.getAttribute("persondao");
 	</table>
 
 	<a id="botao-cadastrar"
-		href="http://localhost:8080/projeto-livraria/html/register-person.jsp">Cadastrar
+		href="ShowBooksRegisterPerson">Cadastrar
 		leitor</a>
 
 	<%@ include file="../includes/footer.jsp"%>

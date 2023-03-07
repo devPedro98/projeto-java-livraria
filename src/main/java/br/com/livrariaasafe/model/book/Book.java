@@ -1,4 +1,4 @@
-package br.com.livrariaasafe.model;
+package br.com.livrariaasafe.model.book;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import br.com.livrariaasafe.model.person.Person;
 
 @Entity
 @Table(name = "livros")

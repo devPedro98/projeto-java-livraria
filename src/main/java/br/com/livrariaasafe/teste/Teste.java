@@ -4,8 +4,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import br.com.livrariaasafe.model.Book;
-import br.com.livrariaasafe.model.Person;
+import br.com.livrariaasafe.model.book.Book;
+import br.com.livrariaasafe.model.person.Person;
 
 public class Teste {
 

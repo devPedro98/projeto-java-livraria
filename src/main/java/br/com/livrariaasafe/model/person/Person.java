@@ -1,4 +1,4 @@
-package br.com.livrariaasafe.model;
+package br.com.livrariaasafe.model.person;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import br.com.livrariaasafe.model.book.Book;
 
 @Entity
 @Table(name = "pessoas")

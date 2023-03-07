@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page import="br.com.livrariaasafe.model.Book"%>
+<%@page import="br.com.livrariaasafe.model.book.Book"%>
 <%@page import="java.util.ArrayList"%>
 <%
 Book book = (Book) request.getAttribute("book");

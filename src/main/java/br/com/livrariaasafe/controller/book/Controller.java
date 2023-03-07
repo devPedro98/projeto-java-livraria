@@ -1,4 +1,4 @@
-package br.com.livrariaasafe.controller;
+package br.com.livrariaasafe.controller.book;
 
 import java.io.IOException;
 import java.util.List;
@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.livrariaasafe.model.Book;
-import br.com.livrariaasafe.model.BookDAO;
+import br.com.livrariaasafe.model.book.Book;
+import br.com.livrariaasafe.model.book.BookDAO;
 
 @WebServlet(urlPatterns = { "/Controller", "/main", "/select", "/update", "/delete" })
 public class Controller extends HttpServlet {

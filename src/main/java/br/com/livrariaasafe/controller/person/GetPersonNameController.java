@@ -1,4 +1,4 @@
-package br.com.livrariaasafe.controller;
+package br.com.livrariaasafe.controller.person;
 
 import java.io.IOException;
 import java.util.List;
@@ -10,15 +10,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.livrariaasafe.model.Person;
-import br.com.livrariaasafe.model.PersonDAO;
+import br.com.livrariaasafe.model.person.Person;
+import br.com.livrariaasafe.model.person.PersonDAO;
 
 
-@WebServlet(urlPatterns = { "/PersonController" })
-public class PersonController extends HttpServlet {
+@WebServlet(urlPatterns = { "/GetPersonNameController" })
+public class GetPersonNameController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public PersonController() {
+	public GetPersonNameController() {
 		super();
 	}
 
@@ -35,5 +35,7 @@ public class PersonController extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
+	
+	
 
 }

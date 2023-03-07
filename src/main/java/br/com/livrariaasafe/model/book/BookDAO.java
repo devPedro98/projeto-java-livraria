@@ -1,4 +1,4 @@
-package br.com.livrariaasafe.model;
+package br.com.livrariaasafe.model.book;
 
 import java.util.List;
 
