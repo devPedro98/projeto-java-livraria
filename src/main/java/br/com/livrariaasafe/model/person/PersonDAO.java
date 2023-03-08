@@ -32,4 +32,8 @@ public class PersonDAO {
 		em.getTransaction().commit();
 		em.close();
 	}
+	
+	public Person getPerson(Long id) {
+		return em.find(Person.class, id);
+	}
 }

@@ -3,7 +3,7 @@
 <%@page import="br.com.livrariaasafe.model.person.Person"%>
 <%@page import="java.util.ArrayList"%>
 <%
-ArrayList<Person> list = (ArrayList<Person>) request.getAttribute("persondao");
+Person person = (Person) request.getAttribute("person");
 %>
 <!DOCTYPE html>
 <html lang="PT-BR">
@@ -21,41 +21,39 @@ ArrayList<Person> list = (ArrayList<Person>) request.getAttribute("persondao");
 	type="image/x-icon" />
 <link rel="stylesheet" href="css/books.css">
 <link rel="stylesheet" href="css/add-book.css">
-<link rel="stylesheet" href="css/setError.css">
-<link rel="stylesheet" href="css/reader.css">
+<link rel="stylesheet" href="css/add-book.css">
+<link rel="stylesheet" href="css/edit-person.css">
 
 </head>
 <body>
 	<%@ include file="../includes/header.jsp"%>
-	<table>
-		<caption></caption>
-		<thead>
-			<tr>
-				<th>Nome</th>
-				<th>Sobrenome</th>
-				<th>Livro que está lendo</th>
-				<th>Opções</th>
-			</tr>
-		</thead>
-		<tbody>
-			<%
-			for (int i = 0; i < list.size(); i++) {
-			%>
-			<tr>
-				<td><%=list.get(i).getName()%></td>
-				<td><%=list.get(i).getSurname()%></td>
-				<td><%=list.get(i).getBook().getName()%></td>
-				<td><a href="http://localhost:8080/projeto-livraria/UpdatePersonController?id=<%=list.get(i).getId() %>" class="update-button">Editar</a>
-					<a href="javascript: validation(<%=list.get(i).getId()%>)" class="delete-button">Deletar</a></td>
-				<%
-				}
-				%>
-			
-		</tbody>
-	</table>
 
-	<a id="botao-cadastrar" href="ShowBooksRegisterPerson">Cadastrar
-		leitor</a>
+
+	<form action="" method="">
+		<div class="form-group">
+			<label for="nome">Nome:</label> <input type="text" id="nome"
+				name="nome" class="form-control" value="<%out.print(person.getName());%>">
+		</div>
+		<div class="form-group">
+			<label for="sobrenome">Sobrenome:</label> <input type="text"
+				id="sobrenome" name="sobrenome" class="form-control"
+				value="<%out.print(person.getSurname());%>">
+		</div>
+		<div class="form-group">
+			<label for="livro">Livro que está lendo:</label> <select id="livro"
+				name="livro" class="form-control">
+				<option value="<%out.print(person.getBook().getId());%>">
+					<%
+					out.print(person.getBook().getName());
+					%>
+				</option>
+
+			</select>
+		</div>
+		<button type="submit" class="my-btn">Enviar</button>
+	</form>
+
+
 
 	<%@ include file="../includes/footer.jsp"%>
 	<script type="text/javascript" src="scripts/validationDeletePerson.js"></script>
