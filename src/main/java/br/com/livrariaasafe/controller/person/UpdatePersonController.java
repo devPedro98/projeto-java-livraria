@@ -48,7 +48,25 @@ public class UpdatePersonController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doGet(request, response);
+		try {
+			BookDAO bookDAO = new BookDAO();
+			PersonDAO personDAO = new PersonDAO();
+			Person person = new Person();
+			Long idPerson = Long.parseLong(request.getParameter("id"));
+			String name = request.getParameter("nome");
+			String surname = request.getParameter("sobrenome");
+			Long bookId = Long.parseLong(request.getParameter("livro"));
+			Book book = bookDAO.selectId(bookId);
+			person.setId(idPerson);
+			person.setName(name);
+			person.setSurname(surname);
+			person.setBook(book);
+			personDAO.updatePerson(person);
+			response.sendRedirect("html/successfully-updated-person.jsp");
+
+		} catch (IOException | NumberFormatException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

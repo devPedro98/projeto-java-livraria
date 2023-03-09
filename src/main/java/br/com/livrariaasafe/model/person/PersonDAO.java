@@ -36,4 +36,12 @@ public class PersonDAO {
 	public Person getPerson(Long id) {
 		return em.find(Person.class, id);
 	}
+
+	public void updatePerson(Person person) {
+		em.getTransaction().begin();
+		em.merge(person);
+		em.getTransaction().commit();
+		em.close();
+		
+	}
 }

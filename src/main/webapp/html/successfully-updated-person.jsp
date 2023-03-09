@@ -20,10 +20,11 @@
 
 <body>
 	<%@ include file="../includes/header.jsp" %>
+
 	<section class="container-fluid">
 		<div class="success-message">
 			<i class="fa fa-check-circle"></i>
-			<p>O leitor foi atualizado com sucesso</p>
+			<p>O leitor foi atualizado com sucesso.</p>
 		</div>
 
 
@@ -35,6 +36,7 @@
 				novo leitor</a>
 		</section>
 	</section>
+
 
 
 

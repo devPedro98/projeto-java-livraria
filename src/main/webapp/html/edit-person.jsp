@@ -31,7 +31,8 @@ ArrayList<Book> books = (ArrayList<Book>) request.getAttribute("books");
 	<%@ include file="../includes/header.jsp"%>
 
 
-	<form action="" method="">
+	<form action="UpdatePersonController" method="POST">
+	<input type="hidden" name="id" value="<%out.print(person.getId());%>">
 		<div class="form-group">
 			<label for="nome">Nome:</label> <input type="text" id="nome"
 				name="nome" class="form-control"
@@ -48,7 +49,7 @@ ArrayList<Book> books = (ArrayList<Book>) request.getAttribute("books");
 				<%
 				for (int i = 0; i < books.size(); i++) {
 				%>
-				<option value="<%out.print(person.getBook().getId());%>"><%out.print(books.get(i).getName());%></option>
+				<option value="<%out.print(books.get(i).getId());%>"><%out.print(books.get(i).getName());%></option>
 				<%
 				}
 				%>
