@@ -23,7 +23,7 @@
 	<section class="container-fluid">
 		<div class="success-message">
 			<i class="fa fa-check-circle"></i>
-			<p>O leitor foi atualizado com sucesso</p>
+			<p>O livro foi atualizado com sucesso</p>
 		</div>
 
 
@@ -31,8 +31,8 @@
 			<a class="btn btn-dark"
 				href="http://localhost:8080/projeto-livraria/">Voltar ao início.</a>
 			<a class="btn btn-primary"
-				href="http://localhost:8080/projeto-livraria/GetPersonNameController">Cadastrar
-				novo leitor</a>
+				href="http://localhost:8080/projeto-livraria/main">Cadastrar
+				novo livro</a>
 		</section>
 	</section>
 
