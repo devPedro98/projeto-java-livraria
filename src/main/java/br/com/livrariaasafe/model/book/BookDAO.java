@@ -10,6 +10,7 @@ import br.com.livrariaasafe.util.JPAUtil;
 public class BookDAO {
 
     private final EntityManager em;
+    private static final String READ_ALL_BOOKS = "SELECT p FROM Book p";
 
     public BookDAO() {
         this.em = JPAUtil.getEntityManager();
@@ -23,8 +24,7 @@ public class BookDAO {
     }
 
     public List<Book> readAllBooks() {
-        String jpql = "SELECT p FROM Book p";
-        return em.createQuery(jpql, Book.class).getResultList();
+        return em.createQuery(READ_ALL_BOOKS, Book.class).getResultList();
     }
 
     public Book selectId(Long id) {
