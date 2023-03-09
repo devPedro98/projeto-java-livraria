@@ -24,10 +24,10 @@ public class DeletePerson extends HttpServlet {
 			throws ServletException, IOException {
 		try {
 			Person person = new Person();
-			PersonDAO personDAO = new PersonDAO();
+			PersonDAO dao = new PersonDAO();
 			Long id = Long.parseLong(request.getParameter("id"));
 			person.setId(id);
-			personDAO.deletePerson(person);
+			dao.deletePerson(person);
 			response.sendRedirect("GetPersonNameController");
 
 		} catch (IOException | NumberFormatException e) {
