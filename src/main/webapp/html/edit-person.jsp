@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="br.com.livrariaasafe.model.person.Person"%>
+<%@page import="br.com.livrariaasafe.model.book.Book"%>
 <%@page import="java.util.ArrayList"%>
 <%
 Person person = (Person) request.getAttribute("person");
+ArrayList<Book> books = (ArrayList<Book>) request.getAttribute("books");
 %>
 <!DOCTYPE html>
 <html lang="PT-BR">
@@ -32,7 +34,8 @@ Person person = (Person) request.getAttribute("person");
 	<form action="" method="">
 		<div class="form-group">
 			<label for="nome">Nome:</label> <input type="text" id="nome"
-				name="nome" class="form-control" value="<%out.print(person.getName());%>">
+				name="nome" class="form-control"
+				value="<%out.print(person.getName());%>">
 		</div>
 		<div class="form-group">
 			<label for="sobrenome">Sobrenome:</label> <input type="text"
@@ -42,11 +45,13 @@ Person person = (Person) request.getAttribute("person");
 		<div class="form-group">
 			<label for="livro">Livro que está lendo:</label> <select id="livro"
 				name="livro" class="form-control">
-				<option value="<%out.print(person.getBook().getId());%>">
-					<%
-					out.print(person.getBook().getName());
-					%>
-				</option>
+				<%
+				for (int i = 0; i < books.size(); i++) {
+				%>
+				<option value="<%out.print(person.getBook().getId());%>"><%out.print(books.get(i).getName());%></option>
+				<%
+				}
+				%>
 
 			</select>
 		</div>
