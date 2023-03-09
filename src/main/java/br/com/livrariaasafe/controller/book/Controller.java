@@ -98,15 +98,15 @@ public class Controller extends HttpServlet {
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			Book bookJavaBeans = new Book();
 			BookDAO bookDAO = new BookDAO();
-			bookJavaBeans.setName(req.getParameter(BOOKNAME));
-			bookJavaBeans.setAuthor(req.getParameter(BOOKAUTOR));
-			bookJavaBeans.setCategory(req.getParameter(BOOKCATEGORY));
+			bookJavaBeans.setName(request.getParameter(BOOKNAME));
+			bookJavaBeans.setAuthor(request.getParameter(BOOKAUTOR));
+			bookJavaBeans.setCategory(request.getParameter(BOOKCATEGORY));
 			bookDAO.register(bookJavaBeans);
-			resp.sendRedirect("html/successfully-registered-user.jsp");
+			response.sendRedirect("html/successfully-registered-user.jsp");
 		} catch (IOException e) {
 			logger.log(Level.WARNING, e.toString(), e);
 		}

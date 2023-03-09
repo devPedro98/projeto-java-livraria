@@ -20,7 +20,6 @@ public class BookDAO {
         tx.begin();
         em.persist(book);
         tx.commit();
-        closeEntityManager();
     }
 
     public List<Book> readAllBooks() {
@@ -37,7 +36,6 @@ public class BookDAO {
         tx.begin();
         em.merge(book);
         tx.commit();
-        closeEntityManager();
     }
     
     public void deleteBook(Book book) {
@@ -46,7 +44,6 @@ public class BookDAO {
         book = em.find(Book.class, book.getId());
         em.remove(book);
         tx.commit();
-        closeEntityManager();
     }
 
     public void closeEntityManager() {

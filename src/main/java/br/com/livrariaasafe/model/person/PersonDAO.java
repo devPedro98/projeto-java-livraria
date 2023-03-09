@@ -5,43 +5,63 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
-import br.com.livrariaasafe.model.book.Book;
 import br.com.livrariaasafe.util.JPAUtil;
 
 public class PersonDAO {
 
-	private EntityManager em = JPAUtil.getEntityManager();
+	private static final String SELECT_ALL_PEOPLE_FROM_DB = "SELECT p FROM Person p JOIN FETCH p.book";
 
 	public List<Person> readAllPeople() {
-		String jpql = "SELECT p FROM Person p JOIN FETCH p.book";
-		TypedQuery<Person> query = em.createQuery(jpql, Person.class);
-		return query.getResultList();
+		EntityManager em = JPAUtil.getEntityManager();
+		try {
+			TypedQuery<Person> query = em.createQuery(SELECT_ALL_PEOPLE_FROM_DB, Person.class);
+			return query.getResultList();
+		} finally {
+			em.close();
+		}
 	}
 
 	public void createPerson(Person person) {
-		em.getTransaction().begin();
-		em.persist(person);
-		em.getTransaction().commit();
-		em.close();
+		EntityManager em = JPAUtil.getEntityManager();
+		try {
+			em.getTransaction().begin();
+			em.persist(person);
+			em.getTransaction().commit();
+		} finally {
+			em.close();
+		}
 	}
-	
+
 	public void deletePerson(Person person) {
-		em.getTransaction().begin();
-		person = em.find(Person.class, person.getId());
-		em.remove(person);
-		em.getTransaction().commit();
-		em.close();
+		EntityManager em = JPAUtil.getEntityManager();
+		try {
+			em.getTransaction().begin();
+			person = em.find(Person.class, person.getId());
+			em.remove(person);
+			em.getTransaction().commit();
+		} finally {
+			em.close();
+		}
 	}
-	
+
 	public Person getPerson(Long id) {
-		return em.find(Person.class, id);
+		EntityManager em = JPAUtil.getEntityManager();
+		try {
+			return em.find(Person.class, id);
+		} finally {
+			em.close();
+		}
 	}
 
 	public void updatePerson(Person person) {
-		em.getTransaction().begin();
-		em.merge(person);
-		em.getTransaction().commit();
-		em.close();
-		
+		EntityManager em = JPAUtil.getEntityManager();
+		try {
+			em.getTransaction().begin();
+			em.merge(person);
+			em.getTransaction().commit();
+		} finally {
+			em.close();
+		}
 	}
+
 }
