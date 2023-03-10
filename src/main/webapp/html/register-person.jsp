@@ -17,22 +17,19 @@ ArrayList<Book> books = (ArrayList<Book>) request.getAttribute("books");
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/register-person.css">
 <link rel="shortcut icon" href="img/favicon-livro.png"
 	type="image/x-icon" />
-<link rel="stylesheet" href="css/books.css">
-<link rel="stylesheet" href="css/add-book.css">
-<link rel="stylesheet" href="css/setError.css">
-<link rel="stylesheet" href="css/register-person.css">
 </head>
 <body>
 	<%@ include file="../includes/header.jsp"%>
 
 	<form action="ShowBooksRegisterPerson" method="post">
-		<label for="nome">Nome:</label> <input type="text" id="nome"
-			name="nome" required> <label for="sobrenome">Sobrenome:</label>
-		<input type="text" id="sobrenome" name="sobrenome" required> <label
+		<label for="nome">Nome:</label> <input type="text" pattern="^[a-zA-Z]+(?: [a-zA-Z]+)*$" id="nome"
+			name="nome" title="Digite apenas letras e não deixe espaços em branco no início ou no final" required> <span id="span-validation-name" class="name-invisible error-span-person">O campo nome precisa ter no mínimo 9 caracteres.</span> <label for="sobrenome">Sobrenome:</label>
+		<input type="text" pattern="^[a-zA-Z]+(?: [a-zA-Z]+)*$" id="sobrenome" name="sobrenome" required><span id="span-validation-surname" class="surname-invisible error-span-person">O campo sobrenome precisa ter no mínimo 9 caracteres.</span> <label
 			for="livro">Livro que está lendo:</label> <select id="livro"
-			name="livro" required>
+			name="livro" title="Digite apenas letras e não deixe espaços em branco no início ou no final" required>
 			<option value="" disabled selected>Selecione um livro</option>
 			<%
 			for (Book book : books) {
@@ -41,12 +38,13 @@ ArrayList<Book> books = (ArrayList<Book>) request.getAttribute("books");
 			<%
 			}
 			%>
-		</select><input type="submit" value="Cadastrar">
+		</select><input id="cadastrar-pessoa" type="submit" value="Cadastrar" disabled>
 	</form>
 
 
 
 
 	<%@ include file="../includes/footer.jsp"%>
+	<script type="text/javascript" src="scripts/validatePerson.js" ></script>
 </body>
 </html>
