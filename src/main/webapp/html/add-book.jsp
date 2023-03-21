@@ -50,7 +50,7 @@
 					id="book-category" class="form-add-book form-control"
 					maxlength="20" placeholder="Categoria do livro"
 					oninput="categoryValidate()" required><span
-					class="span-off">Nome deve ter mais do que 5 caracteres</span>
+					class="span-off">Categoria deve ter mais do que 5 caracteres</span>
 			</div>
 			<button id="button-cadastrar" type="submit" class="btn btn-primary"
 				disabled>Cadastrar</button>

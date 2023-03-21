@@ -70,7 +70,7 @@ ArrayList<Book> list = (ArrayList<Book>) request.getAttribute("asafelibrary");
 		</table>
 	</section>
 	<div class="div-button-add-book">
-		<a class="btn btn-primary button-add-book"
+		<a id="button-add-book" class="btn btn-primary button-add-book"
 			href="http://localhost:8080/projeto-livraria/html/add-book.jsp">Novo
 			Livro</a>
 	</div>
