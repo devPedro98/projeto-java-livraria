@@ -1,4 +1,4 @@
-package br.com.projeto.livraria.create.book;
+package br.com.projeto.livraria.selenium.create.book;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

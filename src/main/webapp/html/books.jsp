@@ -51,6 +51,9 @@ ArrayList<Book> list = (ArrayList<Book>) request.getAttribute("asafelibrary");
 			</thead>
 			<tbody>
 				<%
+				if(list.size() > 0){
+					
+				
 				for (int i = 0; i < list.size(); i++) {
 				%>
 				<tr>
@@ -59,11 +62,22 @@ ArrayList<Book> list = (ArrayList<Book>) request.getAttribute("asafelibrary");
 					<td><%=list.get(i).getAuthor()%></td>
 					<td><%=list.get(i).getCategory()%></td>
 					<td><a href="select?idbook=<%=list.get(i).getId()%>"
-						class="btn btn-primary">Editar</a> <a
+						class="btn btn-primary edit-book">Editar</a> <a
 						href="javascript: validation(<%=list.get(i).getId()%>)"
 						class="btn button-delete">Deletar</a></td>
 				</tr>
 				<%
+				}
+				} else {
+					%>
+					<tr>
+					<td>Nenhum livro foi cadastrado</td>
+					<td>Nenhum livro foi cadastrado</td>
+					<td>Nenhum livro foi cadastrado</td>
+					<td>Nenhum livro foi cadastrado</td>
+					<td>Nenhum livro foi cadastrado</td>
+				</tr>
+				<% 
 				}
 				%>
 			</tbody>
