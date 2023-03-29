@@ -13,9 +13,10 @@ public class JPAUtil {
 	private static EntityManagerFactory factory;
 
 	public static EntityManager getEntityManager() {
-		if(factory == null) {
+		if (factory == null) {
 			factory = Persistence.createEntityManagerFactory("livraria");
 		}
 		return factory.createEntityManager();
 	}
+
 }

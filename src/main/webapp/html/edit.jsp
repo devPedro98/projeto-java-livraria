@@ -27,7 +27,7 @@ Book book = (Book) request.getAttribute("book");
 	<%@ include file="../includes/header.jsp"%>
 
 	<section>
-		<form id="add-book" action="update">
+		<form id="add-book" action="updateBook">
 			<label
 				class="col-sm-2 col-form-label col-form-label-sm label-add-book">ID</label>
 			<div class="col-sm-10">
