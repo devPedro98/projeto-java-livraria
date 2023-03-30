@@ -20,7 +20,7 @@ public class DeleteBookServlet extends HttpServlet {
 	private final Logger logger = Logger.getLogger(DeleteBookServlet.class.getName());
 
 	@Override
-	protected void doDelete(HttpServletRequest request, HttpServletResponse response)
+	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
 			Book bookJavaBeans = new Book();
