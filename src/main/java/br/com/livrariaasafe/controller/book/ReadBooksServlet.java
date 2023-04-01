@@ -21,7 +21,7 @@ public class ReadBooksServlet extends HttpServlet {
 	private final Logger logger = Logger.getLogger(ReadBooksServlet.class.getName());
 
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		BookDAO bookDAO = new BookDAO();
 		List<Book> list = bookDAO.readAllBooks();

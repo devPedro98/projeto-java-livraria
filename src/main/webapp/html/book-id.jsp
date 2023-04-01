@@ -44,7 +44,7 @@
 						<td><c:out value="${ javabeans.name}" /></td>
 						<td><c:out value="${ javabeans.author}" /></td>
 						<td><c:out value="${ javabeans.category}" /></td>
-						<td><a href="select?idbook=${ javabeans.id}"
+						<td><a href="fillFormUpdate?idbook=${ javabeans.id}"
 							class="btn btn-primary">Editar</a> <a
 							href="javascript: validation(${ javabeans.id})"
 							class="btn btn-danger btn-book-id">Deletar</a></td>

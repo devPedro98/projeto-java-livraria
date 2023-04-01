@@ -20,7 +20,7 @@ public class FillFormUpdateServlet extends HttpServlet {
 	private final Logger logger = Logger.getLogger(FillFormUpdateServlet.class.getName());
 
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Book bookJavaBeans = new Book();
 		BookDAO bookDAO = new BookDAO();

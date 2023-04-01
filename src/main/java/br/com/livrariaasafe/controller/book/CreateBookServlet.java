@@ -19,8 +19,7 @@ public class CreateBookServlet extends HttpServlet {
 	private final Logger logger = Logger.getLogger(CreateBookServlet.class.getName());
 
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			Book bookJavaBeans = new Book();
 			BookDAO bookDAO = new BookDAO();

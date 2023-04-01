@@ -18,13 +18,21 @@ import br.com.livrariaasafe.model.book.BookDAO;
 public class DeleteBookServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private final Logger logger = Logger.getLogger(DeleteBookServlet.class.getName());
+	private final BookDAO bookDAO;
+	
+	public DeleteBookServlet() {
+		this.bookDAO = new BookDAO();
+	}
+
+	public DeleteBookServlet(BookDAO bookDAO) {
+		this.bookDAO = bookDAO;
+	}
 
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
 			Book bookJavaBeans = new Book();
-			BookDAO bookDAO = new BookDAO();
 			String id = request.getParameter("id");
 			Long idLong = Long.parseLong(id);
 			bookJavaBeans.setId(idLong);
