@@ -10,9 +10,24 @@
 
 #book-id {
 	width: 50%;
-	
 }
 
 .label-add-book {
 	font-size: 20px;
+}
+
+/*Botão atualizar livro*/
+.btn-atualizar-livro {
+	margin: 10px 0 10px 15px;
+	background-color: #1e2939;
+	color: white !important;
+	cursor: pointer;
+}
+
+.btn-atualizar-livro:active {
+	background-color: #8c8c8c !important;
+}
+
+.btn-atualizar-livro:hover {
+	background-color: #8c8c8c !important;
 }

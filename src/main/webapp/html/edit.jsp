@@ -65,7 +65,7 @@ Book book = (Book) request.getAttribute("book");
 					class="span-off">Nome deve ter mais do que 5 caracteres</span>
 			</div>
 			<input id="input-cadastrar" type="submit" value="Atualizar"
-				class="btn btn-primary">
+				class="btn btn-primary btn-atualizar-livro">
 		</form>
 	</section>
 
