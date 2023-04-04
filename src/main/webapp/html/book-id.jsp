@@ -25,29 +25,29 @@
 	<%@ include file="../includes/header.jsp"%>
 	<section id="section-table-form">
 
-		<table id=table-form>
+		<table class="table">
 			<caption></caption>
-			<thead>
+			<thead class="table-header">
 				<tr>
-					<th>Id</th>
-					<th>Nome</th>
-					<th>Autor</th>
-					<th>Categoria</th>
-					<th>Opções</th>
+					<th class="table-cell">Id</th>
+					<th class="table-cell">Nome</th>
+					<th class="table-cell">Autor</th>
+					<th class="table-cell">Categoria</th>
+					<th class="table-cell">Opções</th>
 				</tr>
 			</thead>
 			<tbody>
 
 				<tr>
 					<c:if test="${ javabeans != null}">
-						<td><c:out value="${ javabeans.id}" /></td>
-						<td><c:out value="${ javabeans.name}" /></td>
-						<td><c:out value="${ javabeans.author}" /></td>
-						<td><c:out value="${ javabeans.category}" /></td>
-						<td><a href="fillFormUpdate?idbook=${ javabeans.id}"
-							class="btn btn-primary">Editar</a> <a
+						<td class="table-cell"><c:out value="${ javabeans.id}" /></td>
+						<td class="table-cell"><c:out value="${ javabeans.name}" /></td>
+						<td class="table-cell"><c:out value="${ javabeans.author}" /></td>
+						<td class="table-cell"><c:out value="${ javabeans.category}" /></td>
+						<td class="table-cell"><a href="fillFormUpdate?idbook=${ javabeans.id}"
+							class="btn btn-primary edit-book">Editar</a> <a
 							href="javascript: validation(${ javabeans.id})"
-							class="btn btn-danger btn-book-id">Deletar</a></td>
+							class="btn btn-book-id button-delete">Deletar</a></td>
 					</c:if>
 				</tr>
 			</tbody>
