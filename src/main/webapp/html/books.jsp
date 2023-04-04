@@ -26,42 +26,43 @@ ArrayList<Book> list = (ArrayList<Book>) request.getAttribute("asafelibrary");
 
 	<%@ include file="../includes/header.jsp"%>
 	<section class="search-container">
-		<form action="http://localhost:8080/projeto-livraria/selectid">
-			<input type="text" pattern="^[0-9]+$"
+		<form class="search-form-by-id"
+			action="http://localhost:8080/projeto-livraria/selectid">
+			<input class="search-input-by-id" type="text" pattern="^[0-9]+$"
 				title="O campo ID só aceita números maior do que 0" placeholder="ID"
 				name="id">
-			<button type="submit">
-				<i class="fa fa-search">Buscar</i>
+			<button class="search-button-by-id" type="submit">
+				<i class="fa fa-search"></i>Buscar
 			</button>
 		</form>
 	</section>
 
-	<section id="section-table-form">
 
-		<table id=table-form>
+
+	<section id="section-table-form">
+		<table class="table">
 			<caption></caption>
-			<thead>
+			<thead class="table-header">
 				<tr>
-					<th>Id</th>
-					<th>Nome</th>
-					<th>Autor</th>
-					<th>Categoria</th>
-					<th>Opções</th>
+					<th class="table-cell">Id</th>
+					<th class="table-cell">Nome</th>
+					<th class="table-cell">Autor</th>
+					<th class="table-cell">Categoria</th>
+					<th class="table-cell">Opções</th>
 				</tr>
 			</thead>
 			<tbody>
 				<%
-				if(list.size() > 0){
-					
-				
-				for (int i = 0; i < list.size(); i++) {
+				if (list.size() > 0) {
+					for (int i = 0; i < list.size(); i++) {
 				%>
 				<tr>
-					<td><%=list.get(i).getId()%></td>
-					<td><%=list.get(i).getName()%></td>
-					<td><%=list.get(i).getAuthor()%></td>
-					<td><%=list.get(i).getCategory()%></td>
-					<td><a href="fillFormUpdate?idbook=<%=list.get(i).getId()%>"
+					<td class="table-cell"><%=list.get(i).getId()%></td>
+					<td class="table-cell"><%=list.get(i).getName()%></td>
+					<td class="table-cell"><%=list.get(i).getAuthor()%></td>
+					<td class="table-cell"><%=list.get(i).getCategory()%></td>
+					<td class="table-cell"><a
+						href="fillFormUpdate?idbook=<%=list.get(i).getId()%>"
 						class="btn btn-primary edit-book">Editar</a> <a
 						href="javascript: validation(<%=list.get(i).getId()%>)"
 						class="btn button-delete">Deletar</a></td>
@@ -69,27 +70,24 @@ ArrayList<Book> list = (ArrayList<Book>) request.getAttribute("asafelibrary");
 				<%
 				}
 				} else {
-					%>
-					<tr>
-					<td>Nenhum livro foi cadastrado</td>
-					<td>Nenhum livro foi cadastrado</td>
-					<td>Nenhum livro foi cadastrado</td>
-					<td>Nenhum livro foi cadastrado</td>
-					<td>Nenhum livro foi cadastrado</td>
+				%>
+				<tr>
+					<td colspan="5">Nenhum livro foi cadastrado</td>
 				</tr>
-				<% 
+				<%
 				}
 				%>
 			</tbody>
 		</table>
 	</section>
+
 	<div class="div-button-add-book">
 		<a id="button-add-book" class="btn btn-primary button-add-book"
 			href="http://localhost:8080/projeto-livraria/html/add-book.jsp">Novo
 			Livro</a>
 	</div>
 
-	<%@ include file="../includes/footer.jsp" %>
+	<%@ include file="../includes/footer.jsp"%>
 	<script type="text/javascript" src="scripts/validationDelete.js"></script>
 </body>
 </html>
