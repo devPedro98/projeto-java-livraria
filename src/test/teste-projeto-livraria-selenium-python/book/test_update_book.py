@@ -7,6 +7,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
+from consts import URL_READ_BOOKS, URL_SUCESSFULLY_UPDATED_BOOK
 
 
 class UpdateBook(unittest.TestCase):
@@ -22,12 +23,11 @@ class UpdateBook(unittest.TestCase):
         """
         Método que testa a função Update Book na livraria asafe.
         """
-        self.browser.get("http://localhost:8080/projeto-livraria/readBooks")
+        self.browser.get(URL_READ_BOOKS)
         time.sleep(0.5)
         self.browser.find_element(By.CLASS_NAME, "edit-book").click()
         self.browser.find_element(By.ID, "input-cadastrar").click()
-        assert self.browser.current_url == \
-            "http://localhost:8080/projeto-livraria/html/successfully-updated.jsp"
+        assert self.browser.current_url == URL_SUCESSFULLY_UPDATED_BOOK
 
     def tearDown(self):
         time.sleep(1.5)

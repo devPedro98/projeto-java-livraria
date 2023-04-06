@@ -7,6 +7,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
+from consts import URL_READ_BOOKS, URL_SUCESSFULLY_REGISTERED_BOOK
 
 
 class TestCreateBook(unittest.TestCase):
@@ -23,12 +24,12 @@ class TestCreateBook(unittest.TestCase):
         Método abre o site livraria-asafe na página de livros
         e preenche o formulário e cadastra no banco.
         """
-        self.browser.get("http://localhost:8080/projeto-livraria/readBooks")
+        self.browser.get(URL_READ_BOOKS)
         self.browser.find_element(By.ID, "button-add-book").click()
         self.fill_form("book-name", "book-author", "book-category")
         self.browser.find_element(By.ID, "button-cadastrar").click()
         assert self.browser.current_url == \
-            "http://localhost:8080/projeto-livraria/html/successfully-registered-user.jsp"
+            URL_SUCESSFULLY_REGISTERED_BOOK
 
     def fill_form(self, id_book: str, id_author: str, id_category: str):
         """

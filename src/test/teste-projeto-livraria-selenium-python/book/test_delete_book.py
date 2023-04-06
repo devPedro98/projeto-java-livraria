@@ -7,6 +7,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
+from consts import URL_READ_BOOKS
 
 
 class DeleteBook(unittest.TestCase):
@@ -22,7 +23,7 @@ class DeleteBook(unittest.TestCase):
         """
         Método responsável por testar a exclusão de um livro
         """
-        self.browser.get("http://localhost:8080/projeto-livraria/readBooks")
+        self.browser.get(URL_READ_BOOKS)
         input_id = self.browser.find_element(By.CLASS_NAME, "search-input-by-id")
         input_id.click()
         input_id.send_keys("Deletar")
