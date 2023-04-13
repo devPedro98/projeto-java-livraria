@@ -21,7 +21,7 @@
 <body>
 	<%@ include file="../includes/header.jsp"%>
 
-	<section>
+	<section class="form-section">
 		<form id="add-book"
 			action="http://localhost:8080/projeto-livraria/createBook"
 			method="POST">
