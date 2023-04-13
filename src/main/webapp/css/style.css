@@ -13,6 +13,10 @@ html {
 	background-attachment: fixed;
 }
 
+.carrosel-index {
+	margin-bottom: 20px;
+}
+
 body {
 	display: flex;
 	flex-direction: column;
