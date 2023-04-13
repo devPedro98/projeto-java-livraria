@@ -3,6 +3,9 @@
 .btn-primary {
 	margin: 20px 0 0 15px
 }
+.btn-primary:disabled:hover {
+	cursor: not-allowed;
+}
 
 .form-add-book {
 	width: 50%;

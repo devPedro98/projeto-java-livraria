@@ -60,3 +60,7 @@ select {
 	font-size: 14px;
 	font-weight: bold;
 }
+
+#cadastrar-pessoa:disabled:hover {
+	cursor: not-allowed;
+}

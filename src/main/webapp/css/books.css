@@ -66,6 +66,7 @@
 	width: 95%;
 	margin: auto;
 	border-collapse: collapse;
+	text-align: center;
 }
 
 /* Estilos para o cabeçalho da tabela */
@@ -77,14 +78,12 @@
 .table-header th {
 	border: 1px solid #ddd;
 	padding: 10px;
-	text-align: left;
 }
 
 /* Estilos para as células da tabela */
 .table-cell {
 	border: 1px solid #ddd;
-	padding: 10px;
-	text-align: left;
+	text-align: center;
 }
 
 /* Estilos para a primeira célula da tabela */
@@ -119,4 +118,10 @@
 
 .button-delete:hover {
 	background-color: #444;
+}
+
+/* Centralizar botões EDITAR e DELETAR */
+
+.table-cell:last-child {
+    text-align: center;
 }
