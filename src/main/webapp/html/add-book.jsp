@@ -31,7 +31,7 @@
 				<input type="text" name="nome" id="book-name"
 					class="form-add-book form-control" maxlength="40"
 					placeholder="Nome do livro" oninput="nameValidate()" required>
-				<span class="span-off">Nome deve ter mais do que 8 caracteres</span>
+				<span class="span-off">Nome deve ter pelo menos 5 caracteres</span>
 			</div>
 
 			<label for="book-author"
@@ -39,7 +39,7 @@
 			<div class="col-sm-10">
 				<input type="text" pattern="^[a-zA-ZÀ-ÿ]+(?: [a-zA-ZÀ-ÿ]+)*$" title="Este campo só aceita letras" name="autor" id="book-author"class="form-add-book form-control" maxlength="20"
 					placeholder="Autor do livro" oninput="authorValidate()" required><span
-					class="span-off">Autor deve ter mais do que 8 caracteres</span>
+					class="span-off">Autor deve ter pelo menos 5 caracteres</span>
 			</div>
 
 			<label for="book-category"
@@ -50,7 +50,7 @@
 					id="book-category" class="form-add-book form-control"
 					maxlength="20" placeholder="Categoria do livro"
 					oninput="categoryValidate()" required><span
-					class="span-off">Categoria deve ter mais do que 5 caracteres</span>
+					class="span-off">Categoria deve ter pelo menos 5 caracteres</span>
 			</div>
 			<button id="button-cadastrar" type="submit" class="btn btn-primary"
 				disabled>Cadastrar</button>
