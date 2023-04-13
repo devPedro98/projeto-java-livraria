@@ -8,10 +8,10 @@ nameInput.addEventListener("input", ativarBotao);
 surnameInput.addEventListener("input", ativarBotao);
 
 function validarNome(name) {
-	if (name.length <= 8) {
+	if (name.length < 4) {
 		spanName.classList.remove("name-invisible");
 		return true;
-	} else if (name.length >= 9) {
+	} else if (name.length >= 4) {
 		spanName.classList.add("name-invisible");
 		return false;
 	}
@@ -19,21 +19,21 @@ function validarNome(name) {
 }
 
 function validarSobrenome(surname) {
-	if (surname.length <= 8) {
+	if (surname.length < 4) {
 		spanSurname.classList.remove("surname-invisible");
 		return true;
-	} else if (surname.length >= 9) {
+	} else if (surname.length >= 4) {
 		spanSurname.classList.add("surname-invisible");
 		return false;
 	}
 }
 
-function ativarBotao(){
+function ativarBotao() {
 	const name = nameInput.value;
 	const surname = surnameInput.value;
 	validarNome(name)
 	validarSobrenome(surname);
-	if(name.length >=9 && surname.length >=9){
+	if (name.length >= 4 && surname.length >= 4) {
 		button.disabled = false;
 	} else {
 		button.disabled = true;

@@ -26,8 +26,8 @@ ArrayList<Book> books = (ArrayList<Book>) request.getAttribute("books");
 
 	<form action="ShowBooksRegisterPerson" method="post">
 		<label for="nome">Nome:</label> <input type="text" pattern="^[a-zA-Z]+(?: [a-zA-Z]+)*$" id="nome"
-			name="nome" title="Digite apenas letras e não deixe espaços em branco no início ou no final" required> <span id="span-validation-name" class="name-invisible error-span-person">O campo nome precisa ter no mínimo 9 caracteres.</span> <label for="sobrenome">Sobrenome:</label>
-		<input type="text" pattern="^[a-zA-Z]+(?: [a-zA-Z]+)*$" id="sobrenome" name="sobrenome" required><span id="span-validation-surname" class="surname-invisible error-span-person">O campo sobrenome precisa ter no mínimo 9 caracteres.</span> <label
+			name="nome" title="Digite apenas letras e não deixe espaços em branco no início ou no final" required> <span id="span-validation-name" class="name-invisible error-span-person">O campo nome precisa ter no mínimo 4 caracteres.</span> <label for="sobrenome">Sobrenome:</label>
+		<input type="text" pattern="^[a-zA-Z]+(?: [a-zA-Z]+)*$" id="sobrenome" name="sobrenome" required><span id="span-validation-surname" class="surname-invisible error-span-person">O campo sobrenome precisa ter no mínimo 4 caracteres.</span> <label
 			for="livro">Livro que está lendo:</label> <select id="livro"
 			name="livro" title="Digite apenas letras e não deixe espaços em branco no início ou no final" required>
 			<option value="" disabled selected>Selecione um livro</option>

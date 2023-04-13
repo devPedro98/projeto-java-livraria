@@ -33,7 +33,7 @@
 	<main>
 		<div class="container carrosel-index">
 			<div id="carouselExampleFade" class="carousel slide carousel-fade"
-				data-ride="carousel">
+				data-ride="carousel" data-interval="3000">
 				<div class="carousel-inner">
 					<div class="carousel-item active">
 						<img src="img/img-carousel-1.jpg" class="d-block w-100"
