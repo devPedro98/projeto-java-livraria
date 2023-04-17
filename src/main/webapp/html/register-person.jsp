@@ -34,7 +34,7 @@ ArrayList<Book> books = (ArrayList<Book>) request.getAttribute("books");
 			<%
 			for (Book book : books) {
 			%>
-			<option value="<%=book.getId()%>"><%=book.getName()%></option>
+			<option class="option-book" value="<%=book.getId()%>"><%=book.getName()%></option>
 			<%
 			}
 			%>

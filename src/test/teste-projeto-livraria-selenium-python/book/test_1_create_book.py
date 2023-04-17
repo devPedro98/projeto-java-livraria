@@ -7,7 +7,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
-from consts import URL_READ_BOOKS, URL_SUCESSFULLY_REGISTERED_BOOK
+from consts_book import URL_READ_BOOKS, URL_SUCESSFULLY_REGISTERED_BOOK
 
 
 class TestCreateBook(unittest.TestCase):

@@ -6,7 +6,7 @@ import time
 from selenium.webdriver.chrome.service import Service
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
-from consts import URL_READ_BOOKS
+from consts_book import URL_READ_BOOKS
 
 
 class TestReadBook(unittest.TestCase):

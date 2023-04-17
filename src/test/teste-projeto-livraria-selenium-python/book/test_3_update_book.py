@@ -7,10 +7,10 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
-from consts import URL_READ_BOOKS, URL_SUCESSFULLY_UPDATED_BOOK
+from consts_book import URL_READ_BOOKS, URL_SUCESSFULLY_UPDATED_BOOK
 
 
-class UpdateBook(unittest.TestCase):
+class TestUpdateBook(unittest.TestCase):
     """
     Classe para testar o U do CRUD da entidade Book.
     """
@@ -32,3 +32,7 @@ class UpdateBook(unittest.TestCase):
     def tearDown(self):
         time.sleep(1.5)
         self.browser.quit()
+
+
+if __name__ == '__main__':
+    unittest.main()
