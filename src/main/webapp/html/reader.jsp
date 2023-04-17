@@ -39,7 +39,8 @@ ArrayList<Person> list = (ArrayList<Person>) request.getAttribute("persondao");
 		</thead>
 		<tbody>
 			<%
-			for (int i = 0; i < list.size(); i++) {
+			if (list.size() > 0) {
+				for (int i = 0; i < list.size(); i++) {
 			%>
 			<tr>
 				<td><%=list.get(i).getName()%></td>
@@ -50,7 +51,17 @@ ArrayList<Person> list = (ArrayList<Person>) request.getAttribute("persondao");
 					class="update-button">Editar</a> <a
 					href="javascript: validation(<%=list.get(i).getId()%>)"
 					class="delete-button">Deletar</a></td>
+				<td><%=list.get(i).getId()%></td>
 				<%
+				}
+				} else {
+				%>
+				<tr>
+					<td>Nenhum leitor cadastrado</td>
+					<td>Nenhum leitor cadastrado</td>
+					<td>Nenhum leitor cadastrado</td>
+				</tr>
+				<% 
 				}
 				%>
 			
