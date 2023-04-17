@@ -7,10 +7,10 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
-from consts import URL_READ_BOOKS
+from consts_book import URL_READ_BOOKS
 
 
-class DeleteBook(unittest.TestCase):
+class TestDeleteBook(unittest.TestCase):
     """
     Classe responsável por realizar teste de deletar um livro do site livraria asafe.
     """
@@ -24,7 +24,8 @@ class DeleteBook(unittest.TestCase):
         Método responsável por testar a exclusão de um livro
         """
         self.browser.get(URL_READ_BOOKS)
-        input_id = self.browser.find_element(By.CLASS_NAME, "search-input-by-id")
+        input_id = self.browser.find_element(
+            By.CLASS_NAME, "search-input-by-id")
         input_id.click()
         input_id.send_keys("Deletar")
         time.sleep(0.5)
@@ -33,9 +34,14 @@ class DeleteBook(unittest.TestCase):
         time.sleep(0.5)
         alert = self.browser.switch_to.alert
         alert.accept()
-        input_id = self.browser.find_element(By.CLASS_NAME, "search-input-by-id")
+        input_id = self.browser.find_element(
+            By.CLASS_NAME, "search-input-by-id")
         assert input_id.get_attribute("value") == ""
 
     def tearDown(self):
         time.sleep(1.5)
         self.browser.quit()
+
+
+if __name__ == '__main__':
+    unittest.main()

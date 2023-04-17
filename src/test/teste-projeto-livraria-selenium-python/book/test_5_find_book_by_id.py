@@ -8,10 +8,10 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
-from consts import URL_READ_BOOKS, XPATH_ID_BOOK
+from consts_book import URL_READ_BOOKS, XPATH_ID_BOOK
 
 
-class FindBookById(unittest.TestCase):
+class TestFindBookById(unittest.TestCase):
     """
     Classe que realiza o teste de busca de um livro pelo id
     """
@@ -26,13 +26,22 @@ class FindBookById(unittest.TestCase):
         """
         self.browser.get(URL_READ_BOOKS)
         id_element = self.browser.find_element(By.XPATH, XPATH_ID_BOOK)
-        id_value = id_element.text
-        input_search_id = self.browser.find_element(By.CLASS_NAME, "search-input-by-id")
-        input_search_id.click()
-        input_search_id.send_keys(id_value + Keys.ENTER)
-        html = self.browser.page_source
-        self.assertIn(id_value, html)
+        html_page = self.browser.page_source
+        if "Nenhum livro foi cadastrado" in html_page:
+            raise AssertionError("Não existe livros cadastrados.")
+        else:
+            id_value = id_element.text
+            input_search_id = self.browser.find_element(
+                By.CLASS_NAME, "search-input-by-id")
+            input_search_id.click()
+            input_search_id.send_keys(id_value + Keys.ENTER)
+            html = self.browser.page_source
+            self.assertIn(id_value, html)
 
     def tearDown(self):
         time.sleep(1.5)
         self.browser.quit()
+
+
+if __name__ == '__main__':
+    unittest.main()
