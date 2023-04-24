@@ -13,7 +13,7 @@
 }
 
 #book-id {
-	width: 50%;
+    width: calc(100% - 250px);
 }
 
 .label-add-book {
