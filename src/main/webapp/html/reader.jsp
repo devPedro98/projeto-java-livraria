@@ -51,7 +51,6 @@ ArrayList<Person> list = (ArrayList<Person>) request.getAttribute("persondao");
 					class="update-button">Editar</a> <a
 					href="javascript: validation(<%=list.get(i).getId()%>)"
 					class="delete-button">Deletar</a></td>
-				<td><%=list.get(i).getId()%></td>
 				<%
 				}
 				} else {
