@@ -22,7 +22,7 @@
 <body>
 	<%@ include file="../includes/header.jsp"%>
 
-	<section>
+	<section class="form-section">
 	<c:set var="book" value="${book}" />
 		<form id="add-book" action="updateBook">
 			<label
