@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="br.com.livrariaasafe.model.book.Book"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page import="java.util.ArrayList"%>
-<%
-ArrayList<Book> list = (ArrayList<Book>) request.getAttribute("asafelibrary");
-%>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -52,31 +51,33 @@ ArrayList<Book> list = (ArrayList<Book>) request.getAttribute("asafelibrary");
 				</tr>
 			</thead>
 			<tbody>
-				<%
-				if (list.size() > 0) {
-					for (int i = 0; i < list.size(); i++) {
-				%>
-				<tr>
-					<td class="table-cell"><%=list.get(i).getId()%></td>
-					<td class="table-cell"><%=list.get(i).getName()%></td>
-					<td class="table-cell"><%=list.get(i).getAuthor()%></td>
-					<td class="table-cell"><%=list.get(i).getCategory()%></td>
-					<td class="table-cell"><a
-						href="fillFormUpdate?idbook=<%=list.get(i).getId()%>"
-						class="btn btn-primary edit-book">Editar</a> <a
-						href="javascript: validation(<%=list.get(i).getId()%>)"
-						class="btn button-delete">Deletar</a></td>
-				</tr>
-				<%
-				}
-				} else {
-				%>
-				<tr>
-					<td colspan="5">Nenhum livro foi cadastrado</td>
-				</tr>
-				<%
-				}
-				%>
+				<c:set var="bookList" value="${asafelibrary}" />
+				<c:choose>
+					<c:when test="${not empty bookList}">
+						<c:forEach items="${bookList}" var="b">
+							<tr>
+								<td class="table-cell"><c:out value="${b.id}" /></td>
+								<td class="table-cell"><c:out value="${b.name}" /></td>
+								<td class="table-cell"><c:out value="${b.author}" /></td>
+								<td class="table-cell"><c:out value="${b.category}" /></td>
+								<td class="table-cell"><a
+									href="fillFormUpdate?idbook=${b.id}"
+									class="btn btn-primary edit-book">Editar</a> <a
+									href="javascript: validation(${b.id})"
+									class="btn button-delete">Deletar</a></td>
+							</tr>
+						</c:forEach>
+					</c:when>
+					<c:otherwise>
+						<tr>
+							<td>Nenhum livro foi cadastrado</td>
+							<td>Nenhum livro foi cadastrado</td>
+							<td>Nenhum livro foi cadastrado</td>
+							<td>Nenhum livro foi cadastrado</td>
+						</tr>
+					</c:otherwise>
+				</c:choose>
+
 			</tbody>
 		</table>
 	</section>
