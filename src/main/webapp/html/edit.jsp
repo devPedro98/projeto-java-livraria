@@ -1,17 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page import="br.com.livrariaasafe.model.book.Book"%>
-<%@page import="java.util.ArrayList"%>
-<%
-Book book = (Book) request.getAttribute("book");
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Edite o Livro ID: <%out.print(book.getId());%></title>
+<title>Edite o Livro ID: <c:out value="${book.id}" /></title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
@@ -27,19 +23,20 @@ Book book = (Book) request.getAttribute("book");
 	<%@ include file="../includes/header.jsp"%>
 
 	<section>
+	<c:set var="book" value="${book}" />
 		<form id="add-book" action="updateBook">
 			<label
 				class="col-sm-2 col-form-label col-form-label-sm label-add-book">ID</label>
 			<div class="col-sm-10">
 				<input type="text" name="id" id="book-id" class="form-control"
-					value="<%out.print(book.getId());%>" readonly>
+					value="<c:out value="${book.id}" />" readonly>
 			</div>
 			<label for="book-name"
 				class="col-sm-2 col-form-label col-form-label-sm label-add-book">Nome</label>
 			<div class="col-sm-10">
 				<input type="text" name="nome" id="book-name"
 					class="form-add-book form-control" oninput="nameValidate()"
-					value="<%out.print(book.getName());%>" required>
+					value="<c:out value="${book.name}" />" required>
 				<span class="span-off">Nome deve ter mais do que 8 caracteres</span>
 			</div>
 
@@ -50,7 +47,7 @@ Book book = (Book) request.getAttribute("book");
 					title="Este campo só aceita letras" oninvalid="" name="autor"
 					id="book-author" class="form-add-book form-control"
 					oninput="authorValidate()"
-					value="<%out.print(book.getAuthor());%>" required><span
+					value="<c:out value="${book.author}" />" required><span
 					class="span-off">Autor deve ter mais do que 8 caracteres</span>
 			</div>
 
@@ -61,7 +58,7 @@ Book book = (Book) request.getAttribute("book");
 					title="Este campo só aceita letras" name="categoria"
 					id="book-category" class="form-add-book form-control"
 					oninput="categoryValidate()"
-					value="<%out.print(book.getCategory());%>" required><span
+					value="<c:out value="${book.category}" />" required><span
 					class="span-off">Nome deve ter mais do que 5 caracteres</span>
 			</div>
 			<input id="input-cadastrar" type="submit" value="Atualizar"

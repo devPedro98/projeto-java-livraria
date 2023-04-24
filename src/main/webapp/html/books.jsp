@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@page import="br.com.livrariaasafe.model.book.Book"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@page import="java.util.ArrayList"%>
 
 <!DOCTYPE html>
 <html lang="pt-br">
