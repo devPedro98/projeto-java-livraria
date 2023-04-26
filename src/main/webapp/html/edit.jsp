@@ -23,7 +23,7 @@
 	<%@ include file="../includes/header.jsp"%>
 
 	<section class="form-section">
-	<c:set var="book" value="${book}" />
+		<c:set var="book" value="${book}" />
 		<form id="add-book" action="updateBook">
 			<label
 				class="col-sm-2 col-form-label col-form-label-sm label-add-book">ID</label>
@@ -36,8 +36,8 @@
 			<div class="col-sm-10">
 				<input type="text" name="nome" id="book-name"
 					class="form-add-book form-control" oninput="nameValidate()"
-					value="<c:out value="${book.name}" />" required>
-				<span class="span-off">Nome deve ter mais do que 8 caracteres</span>
+					value="<c:out value="${book.name}" />" required> <span
+					class="span-off">Nome deve ter mais do que 8 caracteres</span>
 			</div>
 
 			<label for="book-author"
@@ -46,9 +46,9 @@
 				<input type="text" pattern="^[a-zA-ZÀ-ÿ]+(?: [a-zA-ZÀ-ÿ]+)*$"
 					title="Este campo só aceita letras" oninvalid="" name="autor"
 					id="book-author" class="form-add-book form-control"
-					oninput="authorValidate()"
-					value="<c:out value="${book.author}" />" required><span
-					class="span-off">Autor deve ter mais do que 8 caracteres</span>
+					oninput="authorValidate()" value="<c:out value="${book.author}" />"
+					required><span class="span-off">Autor deve ter mais
+					do que 8 caracteres</span>
 			</div>
 
 			<label for="book-category"

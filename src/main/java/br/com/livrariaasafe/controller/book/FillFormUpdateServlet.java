@@ -20,24 +20,36 @@ public class FillFormUpdateServlet extends HttpServlet {
 	private final Logger logger = Logger.getLogger(FillFormUpdateServlet.class.getName());
 
 	@Override
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		Book bookJavaBeans = new Book();
-		BookDAO bookDAO = new BookDAO();
-		Long id = getIdBook(request);
-		bookJavaBeans.setId(id);
-		bookJavaBeans = bookDAO.selectId(id);
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
+			Book bookJavaBeans = new Book();
+			BookDAO bookDAO = new BookDAO();
+			Long id = getIdBook(request);
+			bookJavaBeans.setId(id);
+			bookJavaBeans = bookDAO.selectId(id);
+			fillBook(request, bookJavaBeans);
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("html/edit.jsp");
+			requestDispatcher.forward(request, response);
+		} catch (IllegalArgumentException|NullPointerException | ServletException | IOException e) {
+			logger.log(Level.SEVERE, e.toString());
+			request.setAttribute("error", "O ID do livro que você está tentando editar não existe.");
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("error/error-id-doestn-exist.jsp");
+			try {
+				requestDispatcher.forward(request, response);
+
+			} catch (IOException | ServletException e2) {
+				logger.log(Level.WARNING, e2.toString());
+			}
+
+		}
+	}
+
+	private void fillBook(HttpServletRequest request, Book bookJavaBeans) {
 		request.setAttribute("id", bookJavaBeans.getId());
 		request.setAttribute("nome", bookJavaBeans.getName());
 		request.setAttribute("autor", bookJavaBeans.getAuthor());
 		request.setAttribute("categoria", bookJavaBeans.getCategory());
 		request.setAttribute("book", bookJavaBeans);
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("html/edit.jsp");
-		try {
-			requestDispatcher.forward(request, response);
-		} catch (ServletException | IOException e) {
-			logger.log(Level.SEVERE, e.toString());
-		}
 	}
 
 	public Long getIdBook(HttpServletRequest request) {
